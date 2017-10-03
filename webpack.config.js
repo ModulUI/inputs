@@ -47,6 +47,10 @@ module.exports = env => {
                     warnings: false,
                 },
             })),
+            new webpack.ProvidePlugin({
+                $: 'jquery',
+                jQuery: 'jquery'
+            })
         ])
     });
 };
