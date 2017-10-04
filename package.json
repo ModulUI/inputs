@@ -1,6 +1,6 @@
 {
-  "name": "inputs",
-  "version": "1.0.0",
+  "name": "modul-components",
+  "version": "0.0.1",
   "description": "",
   "main": "./lib",
   "module": "./src/components",
