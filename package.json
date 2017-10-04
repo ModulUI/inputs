@@ -11,6 +11,7 @@
     "watch:test": "mocha --watch --compilers js:babel-register",
     "start": "http-server",
     "setup": "npm install && npm run validate",
+    "git-pub": "git commit -am 'fix' && git push && npm run build && npm publish",
     "validate": "npm-run-all lint test build"
   },
   "repository": {
