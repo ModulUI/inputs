@@ -6,7 +6,7 @@ import AmountFormat from '../src/components/AmountFormat'
 import DatePicker from '../src/components/DatePicker'
 import DatePickerRange from '../src/components/DatePickerRange'
 import Select from '../src/components/Select'
-import {ModalPopup, ConfirmPopup, ContentPopup} from '../src/components/dialogs'
+import {ModalPopup, ConfirmPopup, ContentPopup} from '../src/dialogs'
 import {NotifyService, notifyFactory} from '../src/components/notify'
 
 export default class Page extends Component {
