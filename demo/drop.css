@@ -1,0 +1,301 @@
+.drop-content {
+    display: none;
+}
+
+.drop-element,
+.drop-element:after,
+.drop-element:before,
+.drop-element *,
+.drop-element *:after,
+.drop-element *:before {
+    box-sizing: border-box;
+}
+
+.drop-element {
+    position: absolute;
+    z-index: 5000;
+    transform: translateZ(0);
+    transition: opacity 100ms;
+    opacity: 0;
+    display: none;
+}
+
+.drop-element.drop-open {
+    display: none;
+}
+
+.drop-element.drop-open-transitionend {
+    display: block;
+}
+
+.drop-element.drop-after-open {
+    transition: opacity 0.2s;
+    opacity: 1;
+}
+
+.drop-element.drop-after-open .drop-content {
+    transform: translateY(0) translateZ(0);
+}
+
+.drop-element.drop-target-attached-top {
+    margin-top: -10px;
+}
+
+.drop-element.drop-target-attached-top .drop-content {
+    transform-origin: bottom;
+    transform: translateY(10px);
+}
+
+.drop-element.drop-theme-basic {
+    max-width: 100%;
+    max-height: 100%;
+}
+
+.drop-element.drop_wide .drop-menu {
+    max-width: 70vw;
+}
+
+.drop-element.drop_wide .drop-menu li a {
+    padding-right: 30px;
+}
+
+.drop-element.drop_tall .drop-content-inner {
+    max-height: 70vh;
+}
+
+.drop-element .drop-content {
+    display: block;
+    background: #fff;
+    background-clip: padding-box;
+    padding: 0;
+    box-shadow: 0 5px 20px rgba(0,0,0,0.15), 0 0 1px rgba(0,0,0,0.22);
+    transition: transform 0.2s cubic-bezier(0, 0.6, 0.39, 1);
+    transform: translateY(20px) translateZ(0);
+}
+
+.drop-element .drop-content-inner {
+    width: 100%;
+    max-height: 280px;
+    overflow: auto;
+    box-sizing: border-box;
+}
+
+.drop-element .drop-content-inner div {
+    position: static;
+}
+
+.drop-element .drop-content-inner .loading {
+    width: 150px;
+}
+
+.drop-element .inner_pad,
+.drop-element .inner_padding_15 {
+    padding: 15px;
+}
+
+.drop-element .inner_padding_30 {
+    padding: 30px;
+}
+
+.drop-element .drop-content_search {
+    padding: 10px 20px 10px 15px;
+}
+
+.drop-element .drop-menu {
+    margin: 0;
+    max-width: 280px;
+}
+
+.drop-element .drop-menu.max_w_500 {
+    max-width: 500px;
+}
+
+.drop-element .drop-menu.max_w_600 {
+    max-width: 600px;
+}
+
+.drop-element .drop-menu li {
+    display: block;
+    cursor: pointer;
+    box-sizing: border-box;
+    border-bottom: 1px solid cbdlight;
+}
+
+.drop-element .drop-menu li:last-child {
+    border-bottom: none;
+}
+
+.drop-element .drop-menu li.submenu a {
+    padding-left: 25px;
+}
+
+.drop-element .drop-menu li a,
+.drop-element .drop-menu li button {
+    color: ctext;
+    text-decoration: none;
+    display: block;
+    padding: 10px 15px;
+    transition: color 0.05s, background 0.05s;
+    width: 100%;
+}
+
+.drop-element .drop-menu li a[class*="icon-"]:before,
+.drop-element .drop-menu li button[class*="icon-"]:before {
+    margin-right: 10px;
+}
+
+.drop-element .drop-menu li a:hover,
+.drop-element .drop-menu li button:hover {
+    background-color: cgrey05;
+}
+
+.drop-element .drop-menu li a.link_disabled,
+.drop-element .drop-menu li button.link_disabled {
+    background: none;
+}
+
+.drop-element .drop-menu li a[disabled],
+.drop-element .drop-menu li button[disabled] {
+    cursor: no-drop;
+    color: ctextdis;
+}
+
+.drop-element .drop-menu li.active a,
+.drop-element .drop-menu li.active button {
+    color: cl2;
+}
+
+.drop-element .drop-menu li.highlight a {
+    background: cbghighlight;
+}
+
+.drop-element .drop-title {
+    font-size: fzn -4;
+    font-weight: fwm;
+    color: ctextlight;
+    color: cl2;
+    font-style: italic;
+    margin: 15px 15px 4px;
+}
+
+.drop-element .drop-sep {
+    display: block;
+    height: 1px;
+    margin: 30px -15px;
+    background: cbdlight;
+}
+
+.drop-element .small_text {
+    max-width: 270px;
+}
+
+.drop-element .drop-date-choose {
+    padding: 0 15px 15px;
+}
+
+.drop-element .drop-date-choose .filter_date_value {
+    max-width: none;
+}
+
+.drop-element .drop-date-choose .filter_date_input {
+    width: 98px;
+    padding-right: 0;
+}
+
+.drop-element .drop-date-choose input.date_to {
+    float: none;
+    margin-left: 4px;
+}
+
+.drop-element .dashboard-period-choose {
+    max-height: 320px;
+}
+
+.drop-element .dashboard-period-choose .drop-menu {
+    max-width: 400px;
+}
+
+.drop-element .dashboard-period-choose .drop-menu li:last-child {
+    border-bottom: 1px solid cbdlight40%;
+}
+
+.drop-target > * {
+    pointer-events: none;
+}
+
+.drop-input {
+    height: 44px;
+    border: 1px solid cbd;
+    border-radius: 2px;
+    display: inline-block;
+    background-color: #fff;
+    background-repeat: no-repeat;
+    background-position: calc(100% - 15px) center;
+    font-family: ffn;
+    font-size: fzn;
+    font-weight: fwn;
+    padding: 0 40px 0 15px;
+    color: ctext;
+    box-shadow: inset 0 2px 2px -2px rgba(0,0,0,0.18);
+    box-sizing: border-box;
+    vertical-align: middle;
+    transition: color 0.2s;
+    text-decoration: none;
+    line-height: 44px;
+}
+
+.drop-input > span {
+    display: block;
+    overflow: ellipsis;
+    max-width: 100%;
+}
+
+.drop-input.small {
+    height: 38px;
+    padding-left: 10px;
+    line-height: 36px;
+    font-size: fzn -2;
+}
+
+.drop-input:hover {
+    color: ctext;
+}
+
+.drop-input.drop-enabled {
+    border-color: cl2;
+}
+
+.drop-input.drop-disabled {
+    color: gray;
+    background: #f5f5f5;
+}
+
+.drop-input.error {
+    border-color: #e54d4d;
+    background-color: #fefafa;
+}
+
+.drop-input.success {
+    border-color: green;
+}
+
+.drop-input.second {
+    border-color: transparent;
+    box-shadow: 0 2px 4px -2px rgba(0,0,0,0.2);
+}
+
+.drop-input.second:focus {
+    box-shadow: 0 1px 1px rgba(45,70,104,0.3);
+}
+
+.dashboard-period-choose {
+    max-height: 320px;
+}
+
+.dashboard-period-choose .drop-menu {
+    max-width: 400px;
+}
+
+.dashboard-period-choose .drop-menu li:last-child {
+    border-bottom: 1px solid gray%;
+}
