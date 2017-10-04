@@ -11,7 +11,7 @@ import NumberFormat from './components/NumberFormat';
 import NumberInput from './components/NumberInput';
 import PhoneInput from './components/PhoneInput';
 import Select from './components/Select';
-
+import ReactTooltip from './components/ReactTooltip'
 
 export {
     PhoneInput,
@@ -26,5 +26,6 @@ export {
     LoaderPanel,
     NumberFormat,
     NumberInput,
-    Select
+    Select,
+    ReactTooltip
 };
