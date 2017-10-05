@@ -4,6 +4,7 @@ import AmountInput from '../src/components/AmountInput'
 import DateFormat from '../src/components/DateFormat'
 import AmountFormat from '../src/components/AmountFormat'
 import NumberFormat from '../src/components/NumberFormat'
+import NumberInput from '../src/components/NumberInput'
 import DatePicker from '../src/components/DatePicker'
 import DatePickerRange from '../src/components/DatePickerRange'
 import Select from '../src/components/Select'
@@ -61,6 +62,18 @@ export default class Page extends Component {
                 <div className="jumbotron row">
 
                         <form role="form" onSubmit={this.handleSubmit}>
+                            <div className="form_group">
+                                <div className="input_group_title">
+                                    <NumberInput class="form-control"/>
+                                    <span class="input_title">Number</span>
+                                </div>
+                            </div>
+                            <div className="form_group">
+                                <div className="input_group_title">
+                                    <NumberInput precision={3} float={true} class="form-control"/>
+                                    <span class="input_title">Float</span>
+                                </div>
+                            </div>
                             <div className="form_group">
                                 <div className="input_group_title">
                                     <PhoneInput class="form-control"/>
