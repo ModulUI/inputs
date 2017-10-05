@@ -1,6 +1,6 @@
 {
   "name": "modul-components",
-  "version": "0.0.8",
+  "version": "0.0.9",
   "description": "",
   "main": "./lib",
   "module": "./src/components",
@@ -30,7 +30,7 @@
     "prop-types": "^15.5.8",
     "modul-helpers": "^0.1.9",
     "jquery-datetimepicker": "^2.5.4",
-    "reselect": "^3.0.0",
+    "react-select": "^1.0.0-rc.5",
     "tether-drop": "^1.4.2",
     "react-modal": "^1.9.3",
     "react-notification-system": "^0.2.14",
