@@ -3,11 +3,12 @@ import PhoneInput from '../src/components/PhoneInput'
 import AmountInput from '../src/components/AmountInput'
 import DateFormat from '../src/components/DateFormat'
 import AmountFormat from '../src/components/AmountFormat'
+import NumberFormat from '../src/components/NumberFormat'
 import DatePicker from '../src/components/DatePicker'
 import DatePickerRange from '../src/components/DatePickerRange'
 import Select from '../src/components/Select'
 import {ModalPopup, ConfirmPopup, ContentPopup} from '../src/dialogs'
-import {NotifyService, notifyFactory} from '../src/components/notify'
+import {NotifyService, notifyFactory} from '../src/notify'
 
 export default class Page extends Component {
     constructor(props) {
@@ -101,6 +102,10 @@ export default class Page extends Component {
                             </div>
                             <div className="form_group">
                                 <span class="badge badge-secondary">Amount format: <AmountFormat
+                                    value={100000.12}/></span>
+                            </div>
+                            <div className="form_group">
+                                <span class="badge badge-secondary">Number format: <NumberFormat
                                     value={100000.12}/></span>
                             </div>
                         </form>
