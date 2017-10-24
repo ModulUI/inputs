@@ -20,9 +20,13 @@ class ContentPopup extends React.Component {
 		return this.defer.promise;
 	}
 
+  close() {
+    this.dialog._close();
+    this.defer && this.defer.resolve();
+  }
+
 	handleCloseClick() {
-		this.dialog._close();
-		this.defer && this.defer.resolve();
+		this.close();
 	}
 
 	render() {

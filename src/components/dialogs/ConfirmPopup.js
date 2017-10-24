@@ -16,13 +16,17 @@ class ConfirmPopup extends React.Component {
 		return this.defer.promise;
 	}
 
+  close() {
+    this.dialog._close();
+    this.defer && this.defer.resolve();
+  }
+
 	isOpen() {
 		return this.dialog && this.dialog.isOpen();
 	}
 
 	handleOkClick() {
-		this.dialog._close();
-		this.defer && this.defer.resolve();
+		this.close();
 	}
 
 	handleCancelClick() {
