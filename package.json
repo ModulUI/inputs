@@ -1,6 +1,6 @@
 {
   "name": "modul-components",
-  "version": "0.0.92",
+  "version": "0.0.10",
   "description": "",
   "main": "./lib",
   "module": "./src/components",
@@ -34,7 +34,7 @@
     "tether-drop": "^1.4.2",
     "react-modal": "^1.9.3",
     "react-notification-system": "^0.2.14",
-    "react-tooltip": "git://github.com/benderr/react-tooltip.git#v3.3.5",
+    "react-tooltip": "git+https://github.com/benderr/react-tooltip.git#v3.3.5",
     "q": "^1.4.1"
   },
   "peerDependencies": {
