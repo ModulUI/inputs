@@ -1,7 +1,8 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import {validateHelper} from 'modul-helpers'
+import {validateHelper, numberHelper} from 'modul-helpers'
 import accounting from 'accounting';
+
 
 const CurrencySymbol = ({value}) => {
 	if (value == 'RUR')

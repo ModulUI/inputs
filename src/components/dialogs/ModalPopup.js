@@ -7,55 +7,55 @@ import BaseModal from './BaseModal';
  */
 class ModalPopup extends React.Component {
 
-    constructor(props, context) {
-        super(props, context);
-        this.state = {
-            isOpen: false
-        };
-    }
+	constructor(props, context) {
+		super(props, context);
+		this.state = {
+			isOpen: false
+		};
+	}
 
-    /**
-     * открыть попап
-     */
-    _open() {
-        this.setState({
-            isOpen: true
-        });
-    }
+	/**
+	 * открыть попап
+	 */
+	_open() {
+		this.setState({
+			isOpen: true
+		});
+	}
 
-    isOpen() {
-        return this.state.isOpen;
-    }
+	isOpen() {
+		return this.state.isOpen;
+	}
 
-    /**
-     * закрыть попап
-     */
-    _close() {
-        this.setState({
-            isOpen: false
-        });
-    }
+	/**
+	 * закрыть попап
+	 */
+	_close() {
+		this.setState({
+			isOpen: false
+		});
+	}
 
-    render() {
-        const {
-            children, parentSelector = () => document.getElementsByTagName('body')[0],
-            onAfterOpen, shouldCloseOnOverlayClick, onRequestClose
-        }=this.props;
-        const {isOpen} = this.state || {};
-        return (<BaseModal isOpen={isOpen}
-                           parentSelector={parentSelector}
-                           onAfterOpen={onAfterOpen}
-                           shouldCloseOnOverlayClick={shouldCloseOnOverlayClick}
-                           onRequestClose={onRequestClose}>
-            {children}</BaseModal>);
-    }
+	render() {
+		const {
+			children, parentSelector = () => document.getElementById('root'),
+			onAfterOpen, shouldCloseOnOverlayClick, onRequestClose
+		}=this.props;
+		const {isOpen} = this.state || {};
+		return (<BaseModal isOpen={isOpen}
+						   parentSelector={parentSelector}
+						   onAfterOpen={onAfterOpen}
+						   shouldCloseOnOverlayClick={shouldCloseOnOverlayClick}
+						   onRequestClose={onRequestClose}>
+			{children}</BaseModal>);
+	}
 }
 
 ModalPopup.propTypes = {
-    parentSelector: PropTypes.func,
-    onAfterOpen: PropTypes.func,
-    onRequestClose: PropTypes.func,
-    shouldCloseOnOverlayClick: PropTypes.bool,
+	parentSelector: PropTypes.func,
+	onAfterOpen: PropTypes.func,
+	onRequestClose: PropTypes.func,
+	shouldCloseOnOverlayClick: PropTypes.bool,
 };
 
 export default ModalPopup;

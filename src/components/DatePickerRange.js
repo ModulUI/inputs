@@ -1,7 +1,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import {dateHelper} from 'modul-helpers'
-import Drop from './Drop'
+import {Drop} from 'modul-components';
 import DatePicker from './DatePicker'
 
 const PERIOD = {
