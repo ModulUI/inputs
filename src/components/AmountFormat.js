@@ -1,6 +1,6 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import {validateHelper} from 'modul-helpers'
+import {isEmpty} from '../validators'
 import accounting from 'accounting';
 
 const CurrencySymbol = ({value}) => {
@@ -14,7 +14,7 @@ const CurrencySymbol = ({value}) => {
 };
 
 const AmountFormat = ({value, currency = 'RUR', def = '', className = ''}) => {
-	if (validateHelper.isEmpty(value))
+	if (isEmpty(value))
 		return def ? (<span>{def}</span>) : null;
 	const val = parseFloat(cleanValue(value));
 	const formatted = !isNaN(val) ? accounting.formatNumber(val, 2, " ") : def;
