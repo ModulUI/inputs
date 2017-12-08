@@ -93,7 +93,7 @@ class Select extends React.Component {
         }=this.props;
 
         if (creatable) {
-            return (<Creatable ref={s => this.el = s}
+            return (<Creatable
                                {...props}
                                onBlurResetsInput={onBlurResetsInput}
                                promptTextCreator={promptTextCreator}
