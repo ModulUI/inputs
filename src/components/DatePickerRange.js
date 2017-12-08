@@ -1,6 +1,6 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import dateHelper from 'common/helpers/dateHelper'
+import {dateHelper} from 'modul-helpers'
 import {Drop} from 'modul-components';
 import DatePicker from './DatePicker'
 

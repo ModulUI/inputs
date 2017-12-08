@@ -1,7 +1,6 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import {isEmpty} from '../validators'
-import {cleanValue} from '../helpers/numberHelper'
+import {validateHelper, numberHelper} from 'modul-helpers'
 import accounting from 'accounting';
 
 accounting.settings = {
@@ -11,7 +10,7 @@ accounting.settings = {
 };
 
 const NumberFormat = ({value, className = '', def = ''}) => {
-	if (isEmpty(value))
+	if (validateHelper.isEmpty(value))
 		return def ? (<span className={className}>{def}</span>) : null;
 	const precision = getPrecision(value);
 	const formatted = accounting.formatNumber(value, precision, " ");
@@ -28,7 +27,7 @@ function clean(val) {
 	let value = val;
 	if (!value.replace)
 		value = value.toString();
-	return cleanValue(value);
+	return numberHelper.cleanValue(value);
 }
 
 NumberFormat.propTypes = {

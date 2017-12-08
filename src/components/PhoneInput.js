@@ -1,6 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types'
-import {parseNumber, cleanValue, noZero} from '../helpers/normalizePhone'
+import {numberHelper} from 'modul-helpers'
+
+const {parseNumber, noZero, trimValidLength} = numberHelper;
 
 const symbol = '+7';
 const getPlainNumber = (value) => {

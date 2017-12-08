@@ -1,6 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types'
-import {parseNumber, cleanValue, noZero} from '../helpers/numberHelper'
+import {numberHelper} from 'modul-helpers'
+
+const {parseNumber, noZero, trimValidLength} = numberHelper;
 
 class NumberInput extends React.Component {
 
@@ -45,7 +47,7 @@ class NumberInput extends React.Component {
 
 		if (!val.replace)
 			val = val.toString();
-		return cleanValue(val, this.props.float);
+		return numberHelper.cleanValue(val, this.props.float);
 	}
 
 	handleChange(event) {

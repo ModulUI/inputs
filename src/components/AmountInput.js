@@ -1,33 +1,34 @@
 import React from 'react';
 import accounting from 'accounting';
 import PropTypes from 'prop-types'
-import {parseNumber, noZero, cleanValue as cleanNumber} from '../helpers/numberHelper'
+import {numberHelper} from 'modul-helpers'
 
+const {parseNumber, noZero, trimValidLength} = numberHelper;
 accounting.settings = {
 	number: {
 		decimal: ","
 	}
 };
 
-/**
- * Отсекаем лишние символы после в дробной части, из 2.1121 -> 2.11
- * @param str
- * @param char
- * @returns {*}
- */
-function trimValidLength(str, char) {
-	let resultStr = str;
-	let lengthAfterChar = 0;
-	if (str.lastIndexOf(char) >= 0)
-		lengthAfterChar = str.length - str.lastIndexOf(char) - 1; //без учета точки
-
-	let trimLength = lengthAfterChar - 2; //сколько лишних символов нужно отрезать с конца
-	if (trimLength > 0) {
-		resultStr = str.substr(0, str.length - trimLength);
-	}
-
-	return resultStr;
-}
+// /**
+//  * Отсекаем лишние символы после в дробной части, из 2.1121 -> 2.11
+//  * @param str
+//  * @param char
+//  * @returns {*}
+//  */
+// function trimValidLength(str, char) {
+// 	let resultStr = str;
+// 	let lengthAfterChar = 0;
+// 	if (str.lastIndexOf(char) >= 0)
+// 		lengthAfterChar = str.length - str.lastIndexOf(char) - 1; //без учета точки
+//
+// 	let trimLength = lengthAfterChar - 2; //сколько лишних символов нужно отрезать с конца
+// 	if (trimLength > 0) {
+// 		resultStr = str.substr(0, str.length - trimLength);
+// 	}
+//
+// 	return resultStr;
+// }
 
 function cleanValue(val, ignoreSpace = true) {
 	let res = ignoreSpace ? val.replace(/[^0-9\.,]+/g, '') : val.replace(/[^0-9\., ]+/g, '');

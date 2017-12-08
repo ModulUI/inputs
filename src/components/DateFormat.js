@@ -1,5 +1,5 @@
 import React from 'react'
-import dateHelper from '../helpers/dateHelper'
+import {dateHelper} from 'modul-helpers'
 import PropTypes from 'prop-types'
 const DateFormat = ({value, format = "clever", def = ''}) => {
 	let formatDate = value;
