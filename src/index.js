@@ -12,6 +12,7 @@ import NumberInput from './components/NumberInput';
 import PhoneInput from './components/PhoneInput';
 import Select from './components/Select';
 import ReactTooltip from './components/ReactTooltip'
+import ModulTooltip from './components/ModulTooltip'
 
 export {
     PhoneInput,
@@ -27,5 +28,6 @@ export {
     NumberFormat,
     NumberInput,
     Select,
-    ReactTooltip
+    ReactTooltip,
+    ModulTooltip
 };

@@ -7,6 +7,7 @@ import NumberFormat from '../src/components/NumberFormat'
 import NumberInput from '../src/components/NumberInput'
 import DatePicker from '../src/components/DatePicker'
 import DatePickerRange from '../src/components/DatePickerRange'
+import ModulTooltip from '../src/components/ModulTooltip'
 import Select from '../src/components/Select'
 import {ModalPopup, ConfirmPopup, ContentPopup} from '../src/dialogs'
 import {NotifyService, notifyFactory} from '../src/notify'
@@ -14,7 +15,14 @@ import {NotifyService, notifyFactory} from '../src/notify'
 export default class Page extends Component {
     constructor(props) {
         super(props);
-        this.state = {notifications: []};
+        this.state = {notifications: [], message: 'Тест 1'};
+        //this.getTooltipContent.bind(this);
+    }
+
+    componentDidMount() {
+        // setInterval(() => {
+        //     this.setState({message: 'Тест ' + new Date()});
+        // }, 2000);
     }
 
     handleSubmit = (e) => {
@@ -54,6 +62,10 @@ export default class Page extends Component {
         })
     }
 
+    getTooltipContent() {
+        return 'test ' + new Date();
+    }
+
     render() {
         const {dateFrom, dateTo, selected, notifications}=this.state || {};
         const options = [{value: 1, label: 'option 1'}];
@@ -61,67 +73,67 @@ export default class Page extends Component {
             <section className="section_content full_width">
                 <div className="jumbotron row">
 
-                        <form role="form" onSubmit={this.handleSubmit}>
-                            <div className="form_group">
-                                <div className="input_group_title">
-                                    <NumberInput class="form-control"/>
-                                    <span class="input_title">Number</span>
-                                </div>
+                    <form role="form" onSubmit={this.handleSubmit}>
+                        <div className="form_group">
+                            <div className="input_group_title">
+                                <NumberInput class="form-control"/>
+                                <span class="input_title">Number</span>
                             </div>
-                            <div className="form_group">
-                                <div className="input_group_title">
-                                    <NumberInput precision={3} float={true} class="form-control"/>
-                                    <span class="input_title">Float</span>
-                                </div>
+                        </div>
+                        <div className="form_group">
+                            <div className="input_group_title">
+                                <NumberInput precision={3} float={true} class="form-control"/>
+                                <span class="input_title">Float</span>
                             </div>
-                            <div className="form_group">
-                                <div className="input_group_title">
-                                    <PhoneInput class="form-control"/>
-                                    <span class="input_title">Phone</span>
-                                </div>
+                        </div>
+                        <div className="form_group">
+                            <div className="input_group_title">
+                                <PhoneInput class="form-control"/>
+                                <span class="input_title">Phone</span>
                             </div>
-                            <div className="form_group">
-                                <div className="input_group_title">
-                                    <AmountInput class="form-control"/>
-                                    <span class="input_title">Amount</span>
-                                </div>
+                        </div>
+                        <div className="form_group">
+                            <div className="input_group_title">
+                                <AmountInput class="form-control"/>
+                                <span class="input_title">Amount</span>
                             </div>
-                            <div className="form_group">
-                                <div className="input_group_title">
-                                    <DatePicker class="form-control"/>
-                                    <span class="input_title">Date</span>
-                                </div>
+                        </div>
+                        <div className="form_group">
+                            <div className="input_group_title">
+                                <DatePicker class="form-control"/>
+                                <span class="input_title">Date</span>
                             </div>
-                            <div className="form_group">
-                                <div className="input_group_title">
-                                    <DatePickerRange dateFrom={dateFrom}
-                                                     dateTo={dateTo}
-                                                     onChange={(dates) => this.handleChangeDateRange(dates)}
-                                                     class="form-control"/>
-                                </div>
+                        </div>
+                        <div className="form_group">
+                            <div className="input_group_title">
+                                <DatePickerRange dateFrom={dateFrom}
+                                                 dateTo={dateTo}
+                                                 onChange={(dates) => this.handleChangeDateRange(dates)}
+                                                 class="form-control"/>
                             </div>
-                            <div className="form_group" style={{width: '200px'}}>
-                                <div className="input_group_title w100">
-                                    <div className="input_title">Select</div>
-                                    <Select options={options} value={selected} className="w100"
-                                            onChange={(val) => this.handleSelect(val)}/>
-                                </div>
+                        </div>
+                        <div className="form_group" style={{width: '200px'}}>
+                            <div className="input_group_title w100">
+                                <div className="input_title">Select</div>
+                                <Select options={options} value={selected} className="w100"
+                                        onChange={(val) => this.handleSelect(val)}/>
                             </div>
+                        </div>
 
-                            <div className="form_group">
+                        <div className="form_group">
                                 <span class="label label-danger">Date format: <DateFormat
                                     value={new Date()}
                                     format="d mmmm:R yyyy HH:ss"/></span>
-                            </div>
-                            <div className="form_group">
+                        </div>
+                        <div className="form_group">
                                 <span class="badge badge-secondary">Amount format: <AmountFormat
                                     value={100000.12}/></span>
-                            </div>
-                            <div className="form_group">
+                        </div>
+                        <div className="form_group">
                                 <span class="badge badge-secondary">Number format: <NumberFormat
                                     value={100000.12}/></span>
-                            </div>
-                        </form>
+                        </div>
+                    </form>
                 </div>
                 <div className="m_top_10">
                     <h3>Попапы</h3>
@@ -158,6 +170,23 @@ export default class Page extends Component {
                                        onRemove={::this.handleRemoveNotify}/>
                     </div>
                 </div>
+
+                <div className="m_top_20">
+                    <h3>Тултипы</h3>
+
+                    {/*<span data-mtip="test">наведи на меня</span>*/}
+                    {/*<ModulTooltip getContent={() => 'Тестовы тултип'} dataFor="test"/>*/}
+
+                    {/*<br/>*/}
+                    {/*<span data-mtip="test2">наведи на меня</span>*/}
+                    {/*<ModulTooltip getContent={() => 'Тестовы тултип'} placement="top" dataFor="test2"/>*/}
+
+                    <br/>
+                    <span data-mtip="test3">динамический контент</span>
+                    <ModulTooltip placement="bottom" dataFor="test3" getContent={::this.getTooltipContent}/>
+
+                </div>
+
 
             </section>
         );
