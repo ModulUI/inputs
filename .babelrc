@@ -3,7 +3,8 @@
     "transform-class-properties",
     "syntax-decorators",
     "transform-decorators-legacy",
-    "react-html-attrs"
+    "react-html-attrs",
+    "transform-es2015-modules-commonjs"
   ],
   "presets": [
     [
