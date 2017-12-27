@@ -20,9 +20,9 @@ export default class Page extends Component {
     }
 
     componentDidMount() {
-        // setInterval(() => {
-        //     this.setState({message: 'Тест ' + new Date()});
-        // }, 2000);
+        setInterval(() => {
+            this.setState({message: 'Тест ' + new Date()});
+        }, 2000);
     }
 
     handleSubmit = (e) => {
@@ -67,7 +67,7 @@ export default class Page extends Component {
     }
 
     render() {
-        const {dateFrom, dateTo, selected, notifications}=this.state || {};
+        const {dateFrom, dateTo, selected, notifications, message}=this.state || {};
         const options = [{value: 1, label: 'option 1'}];
         return (
             <section className="section_content full_width">
@@ -171,7 +171,7 @@ export default class Page extends Component {
                     </div>
                 </div>
 
-                <div className="m_top_20">
+                <div className="m_top_20 m_bot_100">
                     <h3>Тултипы</h3>
 
                     {/*<span data-mtip="test">наведи на меня</span>*/}
@@ -183,7 +183,52 @@ export default class Page extends Component {
 
                     <br/>
                     <span data-mtip="test3">динамический контент</span>
-                    <ModulTooltip placement="bottom" dataFor="test3" getContent={::this.getTooltipContent}/>
+                    <ModulTooltip placement="bottom"
+                                  getContent={::this.getTooltipContent}
+                                  dataFor="test3"/>
+
+
+                    <div className="form_group">
+                        <div className="input_group_title">
+                            <NumberInput precision={3}
+                                         float={true}
+                                         class="form-control"
+                                         data-mtip="test4"/>
+                            <span class="input_title">По клику</span>
+                        </div>
+                    </div>
+
+                    <ModulTooltip placement="right"
+                                  trigger="click"
+                                  content="Click outside hide"
+                                  hideOnClickOutside={true}
+                                  dataFor="test4"/>
+
+                    <div className="form_group">
+                        <div className="input_group_title">
+                            <NumberInput precision={3}
+                                         float={true}
+                                         class="form-control"
+                                         data-mtip="test5"/>
+                            <span class="input_title">По фокусу</span>
+                        </div>
+                    </div>
+
+                    <ModulTooltip placement="top"
+                                  trigger="focus"
+                                  content="on focus"
+                                  hideOnClickOutside={true}
+                                  dataFor="test5"/>
+
+                    <br/>
+                    <br/>
+
+                    <span data-mtip="test6">динамический контент с возможность сфокуситься на тултипе</span>
+                    <ModulTooltip placement="bottom"
+                                  preventHideOnFocus={true}
+                                  delay={100}
+                                  getContent={::this.getTooltipContent}
+                                  dataFor="test6"/>
 
                 </div>
 
