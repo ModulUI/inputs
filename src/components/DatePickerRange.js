@@ -5,120 +5,120 @@ import Drop from './Drop'
 import DatePicker from './DatePicker'
 
 const PERIOD = {
-	TODAY: 'TODAY',
-	YESTERDAY: 'YESTERDAY',
-	LAST_30: 'LAST_30',
-	LAST_WEEK: 'LAST_WEEK',
-	LAST_MONTH: 'LAST_MONTH',
-	LAST_QUARTER: 'LAST_QUARTER',
-	LAST_YEAR: 'LAST_YEAR'
+    TODAY: 'TODAY',
+    YESTERDAY: 'YESTERDAY',
+    LAST_30: 'LAST_30',
+    LAST_WEEK: 'LAST_WEEK',
+    LAST_MONTH: 'LAST_MONTH',
+    LAST_QUARTER: 'LAST_QUARTER',
+    LAST_YEAR: 'LAST_YEAR'
+};
+const PERIOD_LABEL = {
+    TODAY: 'Сегодня',
+    YESTERDAY: 'Вчера',
+    LAST_30: 'Последние 30 дней',
+    LAST_WEEK: 'Текущая неделя',
+    LAST_MONTH: 'Текущий месяц',
+    LAST_QUARTER: 'Текущий квартал',
+    LAST_YEAR: 'Весь год'
 };
 
 function getDateRangeByPeriod(period) {
-	let range;
-	switch (period) {
-		case PERIOD.YESTERDAY:
-			const yesterday = dateHelper.getYesterday();
-			range = dateHelper.getDateRange(yesterday);
-			break;
-		case PERIOD.TODAY:
-			range = dateHelper.getDateRange(new Date());
-			break;
-		case PERIOD.LAST_30:
-			range = dateHelper.getLast30DaysDates(new Date());
-			break;
-		case PERIOD.LAST_WEEK:
-			range = dateHelper.getCurrentWeekDates(new Date());
-			break;
-		case PERIOD.LAST_MONTH:
-			range = dateHelper.getCurrentMonthDates(new Date());
-			break;
-		case PERIOD.LAST_QUARTER:
-			range = dateHelper.getCurrentQuarterDates(new Date());
-			break;
-		case PERIOD.LAST_YEAR:
-			range = dateHelper.getCurrentYearDates(new Date());
-			break;
-	}
-	return {dateFrom: range.startDate, dateTo: range.stopDate};
+    let range;
+    switch (period) {
+        case PERIOD.YESTERDAY:
+            const yesterday = dateHelper.getYesterday();
+            range = dateHelper.getDateRange(yesterday);
+            break;
+        case PERIOD.TODAY:
+            range = dateHelper.getDateRange(new Date());
+            break;
+        case PERIOD.LAST_30:
+            range = dateHelper.getLast30DaysDates(new Date());
+            break;
+        case PERIOD.LAST_WEEK:
+            range = dateHelper.getCurrentWeekDates(new Date());
+            break;
+        case PERIOD.LAST_MONTH:
+            range = dateHelper.getCurrentMonthDates(new Date());
+            break;
+        case PERIOD.LAST_QUARTER:
+            range = dateHelper.getCurrentQuarterDates(new Date());
+            break;
+        case PERIOD.LAST_YEAR:
+            range = dateHelper.getCurrentYearDates(new Date());
+            break;
+    }
+    return {dateFrom: range.startDate, dateTo: range.stopDate};
 }
 
 
 class DatePickerRange extends React.Component {
-	static defaultProps = {
-		onChange: () => {
-		},
-		ignoreDropCloseAttr: ''
-	};
+    static defaultProps = {
+        onChange: () => {
+        },
+        ignoreDropCloseAttr: '',
+        className: 'light small',
+        periods: null
+    };
+    static PERIODS = PERIOD;
+    initDropInstance(drop) {
+        const {setDropInstance}=this.props;
+        if (setDropInstance)
+            setDropInstance(drop);
+    }
 
-	initDropInstance(drop) {
-		const {setDropInstance}=this.props;
-		if (setDropInstance)
-			setDropInstance(drop);
-	}
+    handleSelectPeriod(period) {
+        const dateRange = getDateRangeByPeriod(period);
+        this.props.onChange(dateRange);
+    }
 
-	handleSelectPeriod(period) {
-		const dateRange = getDateRangeByPeriod(period);
-		this.props.onChange(dateRange);
-	}
+    handleChangeDateFrom(date) {
+        this.props.onChange({
+            dateFrom: date,
+            dateTo: this.dropTo.getValue()
+        });
+    }
 
-	handleChangeDateFrom(date) {
-		this.props.onChange({
-			dateFrom: date,
-			dateTo: this.dropTo.getValue()
-		});
-	}
+    handleChangeDateTo(date) {
+        this.props.onChange({
+            dateFrom: this.dropFrom.getValue(),
+            dateTo: date
+        });
+    }
 
-	handleChangeDateTo(date) {
-		this.props.onChange({
-			dateFrom: this.dropFrom.getValue(),
-			dateTo: date
-		});
-	}
+    handleSelectDateRange() {
+        this.props.onChange({
+            dateFrom: this.dropFrom.getValue(),
+            dateTo: this.dropTo.getValue()
+        });
+    }
 
-	handleSelectDateRange() {
-		this.props.onChange({
-			dateFrom: this.dropFrom.getValue(),
-			dateTo: this.dropTo.getValue()
-		});
-	}
+    render() {
+        const {ignoreDropCloseAttr, dateFrom, dateTo, className, periods, position = "bottom left"}=this.props;
 
-	render() {
+        const dateFromStr = dateFrom ? dateHelper.dateFormat(dateFrom, 'd mmmm:R') : '';
+        const dateToStr = dateTo ? dateHelper.dateFormat(dateTo, 'd mmmm:R') : '';
 
-		const {ignoreDropCloseAttr, dateFrom, dateTo, position = "bottom left"}=this.props;
+        const list = periods || Object.keys(PERIOD);
 
-		const dateFromStr = dateFrom ? dateHelper.dateFormat(dateFrom, 'd mmmm:R') : '';
-		const dateToStr = dateTo ? dateHelper.dateFormat(dateTo, 'd mmmm:R') : '';
+        let title = 'Выберите период';
+        if (dateFrom || dateTo) {
+            title = '';
+            if (dateFrom)
+                title = `с ${dateFromStr} `;
+            if (dateTo)
+                title += `по ${dateToStr}`;
+        }
 
-		let title = 'Выберите период';
-		if (dateFrom || dateTo) {
-			title = '';
-			if (dateFrom)
-				title = `с ${dateFromStr} `;
-			if (dateTo)
-				title += `по ${dateToStr}`;
-		}
-
-		return (<Drop drop={{position: position}}
+        return (<Drop drop={{position: position}}
 					  setInstance={::this.initDropInstance}>
-			<a className="drop-target icon-date button light small">{title}</a>
+			<a className={'drop-target icon-date button ' + className}>{title}</a>
 			<div className="drop-content" data-ignore={ignoreDropCloseAttr}>
 				<div className="drop-content-inner dashboard-period-choose">
 
 					<ul className="drop-menu">
-						<li><a data-close="true" onClick={() => this.handleSelectPeriod(PERIOD.TODAY)}>Сегодня</a></li>
-						<li><a data-close="true" onClick={() => this.handleSelectPeriod(PERIOD.YESTERDAY)}>Вчера</a>
-						</li>
-						<li><a data-close="true" onClick={() => this.handleSelectPeriod(PERIOD.LAST_30)}>Последние 30
-							дней</a></li>
-						<li><a data-close="true" onClick={() => this.handleSelectPeriod(PERIOD.LAST_WEEK)}>Текущая
-							неделя</a></li>
-						<li><a data-close="true" onClick={() => this.handleSelectPeriod(PERIOD.LAST_MONTH)}>Текущий
-							месяц</a></li>
-						<li><a data-close="true" onClick={() => this.handleSelectPeriod(PERIOD.LAST_QUARTER)}>Текущий
-							квартал</a></li>
-						<li><a data-close="true" onClick={() => this.handleSelectPeriod(PERIOD.LAST_YEAR)}>Весь год</a>
-						</li>
+                        {list.map((item, i) => <li key={i}><a data-close="true" onClick={() => this.handleSelectPeriod(PERIOD[item])}>{PERIOD_LABEL[item]}</a></li>)}
 					</ul>
 					<div className="drop-date-choose">
 						<div className="filter_date_value">
@@ -140,16 +140,17 @@ class DatePickerRange extends React.Component {
 				</div>
 			</div>
 		</Drop>);
-	}
+    }
 }
 
 DatePickerRange.propTypes = {
-	setDropInstance: PropTypes.func,
-	onChange: PropTypes.func,
-	ignoreDropCloseAttr: PropTypes.string,
-	dateFrom: PropTypes.any,
-	dateTo: PropTypes.any,
-	position: PropTypes.string
+    setDropInstance: PropTypes.func,
+    onChange: PropTypes.func,
+    ignoreDropCloseAttr: PropTypes.string,
+    dateFrom: PropTypes.any,
+    dateTo: PropTypes.any,
+    position: PropTypes.string,
+    periods: PropTypes.array,
 };
 
 export default DatePickerRange;
