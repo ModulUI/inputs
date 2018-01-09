@@ -7,55 +7,65 @@ import q from 'q';
  */
 class ContentPopup extends React.Component {
 
-	static defaultProps = {
-		closeName: null,
-		shouldCloseOnOverlayClick: false,
-		disableClose: false,
-		className: ''
-	};
+    static defaultProps = {
+        closeName: null,
+        shouldCloseOnOverlayClick: false,
+        disableClose: false,
+        className: ''
+    };
 
-	open() {
-		this.dialog._open();
-		this.defer = q.defer();
-		return this.defer.promise;
-	}
+    open() {
+        this.dialog._open();
+        this.defer = q.defer();
+        return this.defer.promise;
+    }
 
-  close() {
-    this.dialog._close();
-    this.defer && this.defer.resolve();
-  }
+    /*
+	rainur 15.11.2017
+	добавлен метод, что бы можно было добавить еще 1 обработчик.
+	Например по кнопке Сохранить вызываем this.contentPopup.handleCloseMethod, вызывается reject, при закрытии же формы, вызывается resolve.
+	*/
+    handleCloseMethod() {
+        this.dialog._close();
+        this.defer && this.defer.reject();
+    }
 
-	handleCloseClick() {
-		this.close();
-	}
+    close() {
+        this.dialog._close();
+        this.defer && this.defer.resolve();
+    }
 
-	render() {
-		const {onAfterOpen, shouldCloseOnOverlayClick, closeName, disableClose, className, children}=this.props;
+    handleCloseClick() {
+        this.close();
+    }
 
-		const classNames = ['popup_layer popup_action_default', className].join(' ');
-		return (
+    render() {
+        const {onAfterOpen, shouldCloseOnOverlayClick, closeName, disableClose, className, children}=this.props;
+
+        const classNames = ['popup_layer popup_action_default', className].join(' ');
+        return (
 			<ModalPopup onAfterOpen={onAfterOpen}
 						shouldCloseOnOverlayClick={shouldCloseOnOverlayClick}
 						onRequestClose={::this.handleCloseClick}
 						ref={dialog => this.dialog = dialog}>
 				<div class={classNames}>
-					{!disableClose && <a class="popup_close icon-close" onClick={::this.handleCloseClick}></a>}
+                    {!disableClose && <a class="popup_close icon-close" onClick={::this.handleCloseClick}></a>}
 					<div>
-						{children}
-						{closeName && <div class="popup_panel center_xy">
+                        {children}
+                        {closeName && <div class="popup_panel center_xy">
 							<button class="button small light" onClick={::this.handleCloseClick}>{closeName}</button>
 						</div>}
 					</div>
 				</div>
 			</ModalPopup>);
-	}
+    }
 }
 
 ContentPopup.propTypes = {
-	shouldCloseOnOverlayClick: PropTypes.bool,
-	closeName: PropTypes.string,
-	disableClose: PropTypes.bool,
-	className: PropTypes.string,
+    shouldCloseOnOverlayClick: PropTypes.bool,
+    closeName: PropTypes.string,
+    disableClose: PropTypes.bool,
+    className: PropTypes.string,
 };
 
 export default ContentPopup;
