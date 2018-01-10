@@ -27,15 +27,15 @@
   "dependencies": {
     "accounting": "^0.4.1",
     "classnames": "^2.1.2",
-    "prop-types": "^15.5.8",
-    "modul-helpers": "^0.1.9",
     "jquery-datetimepicker": "^2.5.4",
-    "react-select": "^1.2.0",
-    "tether-drop": "^1.4.2",
+    "modul-helpers": "^0.1.9",
+    "prop-types": "^15.5.8",
+    "q": "^1.4.1",
     "react-modal": "^1.9.3",
     "react-notification-system": "^0.2.14",
+    "react-select": "^1.2.0",
     "react-tooltip": "git+https://github.com/benderr/react-tooltip.git#v3.3.5",
-    "q": "^1.4.1"
+    "tether-drop": "^1.4.2"
   },
   "peerDependencies": {
     "react": "^0.14.9 || ^15.3.0 || ^16.0.0-rc || ^16.0",
