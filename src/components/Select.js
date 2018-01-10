@@ -89,12 +89,14 @@ class Select extends React.Component {
             creatable = false,
             promptTextCreator = label => `Создать: ${label}`,
             onBlurResetsInput = false,
+            filterOptions = true,
             ...props
         }=this.props;
 
         if (creatable) {
             return (<Creatable
                                {...props}
+                               filterOptions={filterOptions}
                                onBlurResetsInput={onBlurResetsInput}
                                promptTextCreator={promptTextCreator}
                                openOnFocus={openOnFocus}
