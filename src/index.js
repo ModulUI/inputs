@@ -9,6 +9,7 @@ import LoaderBlock from './components/LoaderBlock';
 import LoaderPanel from './components/LoaderPanel';
 import NumberFormat from './components/NumberFormat';
 import NumberInput from './components/NumberInput';
+import SnilsInput from './components/SnilsInput';
 import PhoneInput from './components/PhoneInput';
 import Select from './components/Select';
 import ReactTooltip from './components/ReactTooltip'
@@ -27,6 +28,7 @@ export {
     LoaderPanel,
     NumberFormat,
     NumberInput,
+    SnilsInput,
     Select,
     ReactTooltip,
     ModulTooltip
