@@ -5,7 +5,7 @@ import DateFormat from './components/DateFormat';
 import DatePicker from './components/DatePicker';
 import DatePickerRange from './components/DatePickerRange';
 import Drop from './components/Drop';
-import Drop2 from './components/Drop';
+import Drop2 from './components/Drop2';
 import LoaderBlock from './components/LoaderBlock';
 import LoaderPanel from './components/LoaderPanel';
 import NumberFormat from './components/NumberFormat';
