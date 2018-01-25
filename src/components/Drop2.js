@@ -88,6 +88,7 @@ class Drop extends React.Component {
       const content = this.getDropContent(this.props);
       const component = React.cloneElement(content, content.props, this.bindCloseEvent(content));
       const domContent = ReactDOM.render(component, this.container);
+      domContent.className += (' ' + this.state.id)
       return domContent;
     };
     this.drop = new TetherDrop(opts);
