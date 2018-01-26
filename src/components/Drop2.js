@@ -42,7 +42,7 @@ class Drop extends React.Component {
   }
 
   componentWillReceiveProps (nextProps) {
-    if(this.props.children[1] !== nextProps.children[1]){
+    if(this.props.children[1] !== nextProps.children[1] && this._isOpened){
       const content = this.getDropContent(nextProps);
       const component = React.cloneElement(content, content.props, this.bindCloseEvent(content));
       const domContent = ReactDOM.render(component, this.container);
