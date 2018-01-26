@@ -45,7 +45,9 @@ class Drop extends React.Component {
     if(this.props.children[1] !== nextProps.children[1]){
       const content = this.getDropContent(nextProps);
       const component = React.cloneElement(content, content.props, this.bindCloseEvent(content));
-      $( `.${this.state.id}` ).replaceWith(ReactDOM.render(component, this.container));
+      const domContent = ReactDOM.render(component, this.container);
+      domContent.className += (' ' + this.state.id)
+      $( `.${this.state.id}` ).replaceWith(domContent);
       this.drop.position();
     }
   }
