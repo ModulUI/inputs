@@ -7,7 +7,9 @@ node_modules
 
 # dependencies
 demo/node_modules
-
+demo/Markup.Common
+demo/Markup.Kassa
+demo/Markup.Portal
 # testing
 demo/coverage
 

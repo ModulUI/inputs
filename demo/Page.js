@@ -115,8 +115,8 @@ export default class Page extends Component {
                         <div className="form_group" style={{width: '200px'}}>
                             <div className="input_group_title w100">
                                 <div className="input_title">Select</div>
-                                <Select options={options} value={selected} className="w100"
-                                        onChange={(val) => this.handleSelect(val)}/>
+                                {/*<Select options={options} value={selected} className="w100"*/}
+                                        {/*onChange={(val) => this.handleSelect(val)}/>*/}
                             </div>
                         </div>
 
