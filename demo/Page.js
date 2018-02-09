@@ -20,9 +20,9 @@ export default class Page extends Component {
     }
 
     componentDidMount() {
-        setInterval(() => {
-            this.setState({message: 'Тест ' + new Date()});
-        }, 2000);
+        // setInterval(() => {
+        //     this.setState({message: 'Тест ' + new Date()});
+        // }, 2000);
     }
 
     handleSubmit = (e) => {
