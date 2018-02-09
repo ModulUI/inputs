@@ -15,7 +15,8 @@ class ModulTooltip extends React.Component {
         trigger: PropTypes.string,
         container: PropTypes.string,
         autoShow: PropTypes.number,
-        hideOnClickOutside: PropTypes.bool
+        hideOnClickOutside: PropTypes.bool,
+        showInitial: PropTypes.bool,
     };
 
     static defaultProps = {
@@ -26,18 +27,26 @@ class ModulTooltip extends React.Component {
         preventHideOnFocus: false,
         container: '',
         autoShow: 0,
+        showInitial: false,
         hideOnClickOutside: false
     };
+
+    constructor(props) {
+        super(props);
+
+        this.handlerClickOutside = ::this.actionClickOutside;
+    }
 
 
     componentDidMount() {
         this.tooltip = new TooltipModel(this.props);
         if (this.props.hideOnClickOutside) {
-            document.addEventListener('click', ::this.handleClickOutside, true);
+            document.addEventListener('click', this.handlerClickOutside);
         }
     }
 
-    handleClickOutside(e) {
+    actionClickOutside(e) {
+
         console.log('dom click');
         if (!this.tooltip)
             return;
@@ -60,6 +69,7 @@ class ModulTooltip extends React.Component {
     }
 
     componentWillUnmount() {
+        document.removeEventListener('click', this.handlerClickOutside);
         this.tooltip.destroy();
     }
 
