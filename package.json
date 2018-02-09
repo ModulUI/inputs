@@ -1,6 +1,6 @@
 {
   "name": "modul-components",
-  "version": "0.0.29",
+  "version": "0.0.30",
   "description": "",
   "main": "./lib",
   "module": "./src/components",
@@ -27,7 +27,7 @@
   "dependencies": {
     "accounting": "^0.4.1",
     "classnames": "^2.1.2",
-    "jquery-datetimepicker": "^2.5.4",
+    "jquery-datetimepicker": "2.5.11",
     "modul-helpers": "^0.1.9",
     "prop-types": "^15.5.8",
     "q": "^1.4.1",
