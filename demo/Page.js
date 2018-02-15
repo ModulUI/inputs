@@ -1,4 +1,5 @@
 import React, {Component} from 'react';
+import TetherComponent from 'react-tether'
 import PhoneInput from '../src/components/PhoneInput'
 import AmountInput from '../src/components/AmountInput'
 import DateFormat from '../src/components/DateFormat'
@@ -15,7 +16,7 @@ import {NotifyService, notifyFactory} from '../src/notify'
 export default class Page extends Component {
     constructor(props) {
         super(props);
-        this.state = {notifications: [], message: 'Тест 1'};
+        this.state = {notifications: [], message: 'Тест 1',  isOpen: false};
         //this.getTooltipContent.bind(this);
     }
 
@@ -67,13 +68,33 @@ export default class Page extends Component {
     }
 
     render() {
-        const {dateFrom, dateTo, selected, notifications, message}=this.state || {};
+        const {dateFrom, dateTo, selected, notifications, message, isOpen}=this.state || {};
         const options = [{value: 1, label: 'option 1'}];
         return (
             <section className="section_content full_width">
                 <div className="jumbotron row">
 
                     <form role="form" onSubmit={this.handleSubmit}>
+					<TetherComponent
+        attachment="top center"
+        constraints={[{
+          to: 'scrollParent',
+          attachment: 'together'
+        }]}
+      >
+        { /* First child: This is what the item will be tethered to */ }
+        <button onClick={() => {this.setState({isOpen: !isOpen})}}>
+          Toggle Tethered Content
+        </button>
+        { /* Second child: If present, this item will be tethered to the the first child */ }
+        {
+          isOpen &&
+          <div>
+            <h2>Tethered Content</h2>
+            <p>A paragraph to accompany the title.</p>
+          </div>
+        }
+      </TetherComponent>
                         <div className="form_group">
                             <div className="input_group_title">
                                 <NumberInput class="form-control"/>

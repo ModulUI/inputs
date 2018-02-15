@@ -9,6 +9,7 @@ node_modules
 demo/node_modules
 demo/Markup.Common
 demo/Markup.Kassa
+demo/Markup.Buhgalteria
 demo/Markup.Portal
 # testing
 demo/coverage
