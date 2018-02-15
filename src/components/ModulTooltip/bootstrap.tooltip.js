@@ -224,7 +224,7 @@ if (typeof jQuery === 'undefined') {
           .addClass(placement)
       }
 
-      var calculatedOffset = this.getCalculatedOffset(placement, pos, actualWidth, actualHeight)
+      var calculatedOffset = this.getCalculatedOffset(placement, pos, actualWidth, actualHeight, this.options.offset)
 
       this.applyPlacement(calculatedOffset, placement)
 
@@ -377,11 +377,11 @@ if (typeof jQuery === 'undefined') {
     return $.extend({}, elRect, scroll, outerDims, elOffset)
   }
 
-  Tooltip.prototype.getCalculatedOffset = function (placement, pos, actualWidth, actualHeight) {
-    return placement == 'bottom' ? { top: pos.top + pos.height,   left: pos.left + pos.width / 2 - actualWidth / 2 } :
-           placement == 'top'    ? { top: pos.top - actualHeight, left: pos.left + pos.width / 2 - actualWidth / 2 } :
-           placement == 'left'   ? { top: pos.top + pos.height / 2 - actualHeight / 2, left: pos.left - actualWidth } :
-        /* placement == 'right' */ { top: pos.top + pos.height / 2 - actualHeight / 2, left: pos.left + pos.width }
+  Tooltip.prototype.getCalculatedOffset = function (placement, pos, actualWidth, actualHeight, offset) {
+    return placement == 'bottom' ? { top: offset.top + pos.top + pos.height,   left: offset.left + pos.left + pos.width / 2 - actualWidth / 2 } :
+           placement == 'top'    ? { top: offset.top + pos.top - actualHeight, left: offset.left + pos.left + pos.width / 2 - actualWidth / 2 } :
+           placement == 'left'   ? { top: offset.top + pos.top + pos.height / 2 - actualHeight / 2, left: offset.left + pos.left - actualWidth } :
+        /* placement == 'right' */ { top: offset.top + pos.top + pos.height / 2 - actualHeight / 2, left: offset.left + pos.left + pos.width }
 
   }
 
