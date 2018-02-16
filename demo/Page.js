@@ -11,7 +11,7 @@ import ModulTooltip from '../src/components/ModulTooltip'
 import Select from '../src/components/Select'
 import {ModalPopup, ConfirmPopup, ContentPopup} from '../src/dialogs'
 import {NotifyService, notifyFactory} from '../src/notify'
-import Autosuggest from '../src/Autosuggest';
+import Autosuggest from '../src/components/Autosuggest';
 
 export default class Page extends Component {
     constructor(props) {
