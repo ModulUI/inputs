@@ -18,10 +18,8 @@ import ModulTooltip from './components/ModulTooltip'
 import PassportSeriesInput from './components/PassportSeriesInput'
 import PassportNumberInput from './components/PassportNumberInput'
 import PassportDivizionCodeInput from './components/PassportDivizionCodeInput'
-import Autosuggest from './Autosuggest';
 
 export {
-    Autosuggest,
     PhoneInput,
     AmountFormat,
     AmountInput,

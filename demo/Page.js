@@ -11,7 +11,7 @@ import ModulTooltip from '../src/components/ModulTooltip'
 import Select from '../src/components/Select'
 import {ModalPopup, ConfirmPopup, ContentPopup} from '../src/dialogs'
 import {NotifyService, notifyFactory} from '../src/notify'
-import Autosuggest from '../src/components/Autosuggest';
+import AutosuggestInput from '../src/components/AutosuggestInput';
 
 export default class Page extends Component {
     constructor(props) {
@@ -174,7 +174,7 @@ export default class Page extends Component {
 
                 <div className='m_top_20 w40'>
                     <h3>Автодополнение</h3>
-                    <Autosuggest
+                    <AutosuggestInput
                         name='autosuggest'
                         options={[
                             { value: 'Уфа' },

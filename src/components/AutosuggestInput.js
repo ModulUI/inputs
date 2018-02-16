@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import Autosuggest from 'react-autosuggest';
 
 
-export default class AutosuggestField extends Component {
+export default class AutosuggestInput extends Component {
 
     static propTypes = {
         name: PropTypes.string.isRequired,
