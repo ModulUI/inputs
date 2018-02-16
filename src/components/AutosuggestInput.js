@@ -148,16 +148,12 @@ export default class AutosuggestInput extends Component {
 
     render() {
         const {
-            name,
             options,
-            className,
-            tooltip
+            ...props
         } = this.props;
 
         const inputProps = {
-            ...tooltip,
-            name,
-            className,
+            ...props,
             value: this.state.value,
             onChange: ::this.onChangeInput,
             onBlur: ::this.onBlurInput,
