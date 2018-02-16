@@ -51,7 +51,7 @@ class ModulTooltip extends React.Component {
 
     actionClickOutside(e) {
 
-        console.log('dom click');
+        // console.log('dom click');
         if (!this.tooltip)
             return;
 
