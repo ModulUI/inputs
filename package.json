@@ -1,6 +1,6 @@
 {
   "name": "modul-components",
-  "version": "0.0.32",
+  "version": "0.0.33",
   "description": "",
   "main": "./lib",
   "module": "./src/components",
@@ -31,6 +31,7 @@
     "modul-helpers": "^0.1.9",
     "prop-types": "^15.5.8",
     "q": "^1.4.1",
+    "react-autosuggest": "^9.3.3",
     "react-modal": "^1.9.3",
     "react-notification-system": "^0.2.14",
     "react-select": "^1.2.0",

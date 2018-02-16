@@ -11,6 +11,7 @@ import ModulTooltip from '../src/components/ModulTooltip'
 import Select from '../src/components/Select'
 import {ModalPopup, ConfirmPopup, ContentPopup} from '../src/dialogs'
 import {NotifyService, notifyFactory} from '../src/notify'
+import AutosuggestInput from '../src/components/AutosuggestInput';
 
 export default class Page extends Component {
     constructor(props) {
@@ -169,6 +170,31 @@ export default class Page extends Component {
                         <NotifyService notifications={notifications}
                                        onRemove={::this.handleRemoveNotify}/>
                     </div>
+                </div>
+
+                <div className='m_top_20 w40'>
+                    <h3>Автодополнение</h3>
+                    <AutosuggestInput
+                        name='autosuggest'
+                        options={[
+                            { value: 'Уфа' },
+                            { value: 'Москва' },
+                            { value: 'Екатеринбург' },
+                            { value: 'Казань' },
+                        ]}
+                        loading={true}
+                        value='Самара'
+                        className=''
+                        getOptionsValue={(data) => data.value}
+                        onFetchRequested={(val) => console.log('Запросить', val)}
+                        onClearRequested={() => console.log('Очистить список')}
+                        onSelected={(data) => console.log('Выбран из списка', data)}
+                        onClearValue={() => { console.log('Перед очисткой поля'); return true }}
+                        renderOptions={(options, query) => <span>+{options.value}</span>}
+                        onChange={(val) => console.log('onChange', val)}
+                        onBlur={(e) => console.log('onBlur', e)}
+                        onFocus={(e) => console.log('onFocus', e)}
+                    />
                 </div>
 
                 <div className="m_top_20 m_bot_100">
