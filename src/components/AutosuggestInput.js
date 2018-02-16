@@ -22,8 +22,7 @@ export default class AutosuggestInput extends Component {
         onFocus: PropTypes.func
     };
     static defaultProps = {
-        value: '',
-        tooltip: {}
+        value: ''
     };
 
     constructor(props) {
