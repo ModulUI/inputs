@@ -111,7 +111,6 @@ export default class AutosuggestInput extends Component {
      */
     onBlurInput(e) {
         this.props.onBlur && this.props.onBlur(e);
-        e.stopPropagation();
     }
 
     /**
@@ -121,7 +120,6 @@ export default class AutosuggestInput extends Component {
     onFocusInput(e) {
         this.props.onFocus && this.props.onFocus(e);
         e.preventDefault();
-        e.stopPropagation();
     }
 
     /**
