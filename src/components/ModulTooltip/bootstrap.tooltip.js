@@ -252,6 +252,16 @@ if (typeof jQuery === 'undefined') {
           .emulateTransitionEnd(Tooltip.TRANSITION_DURATION) :
         complete()
     }
+
+    // ...
+      if (that.options.delayHide) {
+          clearTimeout(that.timeoutHide);
+
+          that.timeoutHide = setTimeout(function () {
+              that.hide();
+          }, that.options.delayHide);
+
+      }
   }
 
   Tooltip.prototype.applyPlacement = function (offset, placement) {
