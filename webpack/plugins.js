@@ -7,7 +7,6 @@ const HtmlWebpackPlugin = require('html-webpack-plugin')
 const WebpackChunkHash = require('webpack-chunk-hash')
 const ExtractTextPlugin = require('extract-text-webpack-plugin')
 const CommonsChunkPlugin = require('../node_modules/webpack/lib/optimize/CommonsChunkPlugin')
-// const UglifyJSPlugin = require('uglifyjs-webpack-plugin');
 
 const plugins = [
 
@@ -31,11 +30,7 @@ const plugins = [
         'process.env': {
             NODE_ENV: JSON.stringify(config.NODE_ENV)
         },
-        __API_URL__: JSON.stringify(config.app.api.apiUrl),
         __DEV__: config.IS_DEVELOPMENT,
-        __DEV__TEST__: false,
-        __DEV_TOOLS__: config.IS_DEVELOPMENT,
-        __CLIENT__: true,
         __STYLES__: JSON.stringify(config.app.markupStyle)
     }),
     new HtmlWebpackPlugin({
