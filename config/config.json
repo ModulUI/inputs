@@ -1,11 +1,8 @@
 {
   "api": {
-    "url": "http://buhadmin.modulbank.ru",
-    "apiUrl": "/apiAdmin"
+    "url": "http://localhost"
   },
-  "host": "buhadmin.modulbank.ru",
-  "port": 3005,
-  "markupBuhgalteria": "../../../Markup.Buhgalteria/markup/stylus/style_buhgalteria.styl",
-  "markupCommon404": "../../../Markup.Common/markup/stylus/404.styl",
-  "markupLogin": "../../../Markup.Buhgalteria/markup/stylus/buhgalteria_page_login.styl"
+  "host": "localhost",
+  "port": 8080,
+  "markupStyle": "../../Markup.Kassa/markup/stylus/style_kassa.styl"
 }
