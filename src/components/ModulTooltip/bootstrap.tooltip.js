@@ -198,7 +198,7 @@ if (typeof jQuery === 'undefined') {
 
       $tip
         .detach()
-        .css({ top: 0, left: 0, display: 'block' })
+        .css({ opacity: 0, top: 0, left: 0, display: 'block' })
         .addClass(placement)
         .data('bs.' + this.type, this)
 
@@ -246,11 +246,15 @@ if (typeof jQuery === 'undefined') {
         if (prevHoverState == 'out') that.leave(that)
       }
 
-      $.support.transition && this.$tip.hasClass('fade') ?
-        $tip
-          .one('bsTransitionEnd', complete)
-          .emulateTransitionEnd(Tooltip.TRANSITION_DURATION) :
-        complete()
+        $tip.animate({
+            opacity: 100
+        }, 150, function() {
+            $.support.transition && this.$tip.hasClass('fade') ?
+                $tip
+                    .one('bsTransitionEnd', complete)
+                    .emulateTransitionEnd(Tooltip.TRANSITION_DURATION) :
+                complete()
+        });
     }
 
       if (this.options.autoHide) {
@@ -343,13 +347,15 @@ if (typeof jQuery === 'undefined') {
 
     if (e.isDefaultPrevented()) return
 
-    $tip.removeClass('in')
+    $tip.animate({opacity: 0}, 200, function() {
 
-    $.support.transition && this.$tip.hasClass('fade') ?
-      $tip
-        .one('bsTransitionEnd', complete)
-        .emulateTransitionEnd(Tooltip.TRANSITION_DURATION) :
-      complete()
+        $tip.css({opacity: 100}).removeClass('in')
+        $.support.transition && this.$tip.hasClass('fade') ?
+            $tip
+                .one('bsTransitionEnd', complete)
+                .emulateTransitionEnd(Tooltip.TRANSITION_DURATION) :
+            complete()
+    });
 
     this.hoverState = null
 
