@@ -83,7 +83,7 @@ class TooltipModel {
         const {
             className, getContent, preventHideOnFocus,
             delay, placement, html, trigger, container,
-            content, autoShow, showInitial, offset
+            content, autoShow, showInitial, delayHide, offset
         }=props;
 
         const template = `<div class="tooltip ${className}" role="tooltip"><div class="tooltip-arrow"></div><div class="tooltip-inner"></div></div>`;
@@ -91,7 +91,7 @@ class TooltipModel {
         return {
             title: getContent || content,
             preventHideOnFocus: preventHideOnFocus,
-            delay: delay ? {hide: delay} : 0,
+            delay: delay || 0,
             placement: placement,
             html: html || false,
             trigger: trigger,
@@ -99,6 +99,7 @@ class TooltipModel {
             template: template,
             autoShow: autoShow,
             showInitial: showInitial,
+            delayHide: delayHide || 0,
             offset: offset,
         };
     }
