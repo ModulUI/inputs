@@ -6,13 +6,9 @@
   "module": "./src/components",
   "scripts": {
     "build": "babel ./src --out-dir ./lib",
-    "dev": "webpack-dev-server --inline --content-base ./ --env.dev",
-    "test": "cross-env NODE_ENV=test nyc mocha",
-    "watch:test": "mocha --watch --compilers js:babel-register",
-    "start": "http-server",
+    "dev": "webpack-dev-server --inline --content-base --env.dev",
     "setup": "npm install && npm run validate",
-    "git-pub": "git commit -am 'fix' && git push && npm run build && npm publish",
-    "validate": "npm-run-all lint test build"
+    "git-pub": "git commit -am 'fix' && git push && npm run build && npm publish"
   },
   "repository": {
     "type": "git",
@@ -27,6 +23,7 @@
   "dependencies": {
     "accounting": "^0.4.1",
     "classnames": "^2.1.2",
+    "history": "^4.7.2",
     "jquery-datetimepicker": "2.5.11",
     "modul-helpers": "^0.1.9",
     "prop-types": "^15.5.8",
@@ -45,7 +42,7 @@
   "devDependencies": {
     "autoprefixer": "^6.5.3",
     "babel-cli": "^6.26.0",
-    "babel-core": "6.13.2",
+    "babel-core": "^6.26.0",
     "babel-loader": "6.2.4",
     "babel-plugin-istanbul": "1.0.3",
     "babel-plugin-react-html-attrs": "^2.0.0",
@@ -61,8 +58,6 @@
     "babel-preset-stage-0": "^6.16.0",
     "babel-register": "6.11.6",
     "bootstrap": "^3.3.5",
-    "chai": "3.5.0",
-    "chai-enzyme": "0.5.0",
     "cross-env": "2.0.0",
     "css-loader": "0.23.1",
     "enzyme": "2.4.1",
@@ -74,50 +69,27 @@
     "eslint-plugin-promise": "^3.6.0",
     "eslint-plugin-standard": "^3.0.1",
     "file-loader": "0.9.0",
-    "history": "^3.0.0",
-    "http-server": "0.9.0",
     "jsdom": "9.4.1",
     "lodash": "4.14.2",
-    "mocha": "3.0.2",
     "nib": "^1.1.2",
     "npm-run-all": "2.3.0",
-    "nyc": "7.1.0",
     "react": "15.3.0",
     "react-addons-test-utils": "15.3.0",
     "react-dom": "15.3.0",
-    "react-router": "2.6.1",
+    "react-router": "^4.1.1",
+    "react-router-dom": "^4.1.1",
     "react-select": "^1.0.0-rc.10",
-    "sinon": "1.17.5",
-    "sinon-chai": "2.8.0",
-    "starwars-names": "1.6.0",
     "style-loader": "^0.13.0",
-    "stylus-loader": "^3.0.1",
-    "webpack": "2.1.0-beta.20",
+    "stylus": "^0.54.5",
+    "stylus-loader": "^3.0.2",
+    "url-loader": "^0.5.7",
+    "html-webpack-plugin": "^2.30.1",
+    "extract-text-webpack-plugin": "^2.0.0",
+    "webpack": "^3.6.0",
     "webpack-config-utils": "2.0.0",
-    "webpack-dev-server": "2.1.0-beta.0",
-    "webpack-validator": "2.2.7"
-  },
-  "nyc": {
-    "all": true,
-    "check-coverage": true,
-    "branches": 100,
-    "function": 100,
-    "lines": 100,
-    "statements": 100,
-    "reporter": [
-      "text",
-      "lcov"
-    ],
-    "exclude": [
-      "**/*.(test|stub).js",
-      "**/helpers/**",
-      "**/fixtures/**",
-      "**/build/**"
-    ],
-    "sourceMap": false,
-    "instrument": false,
-    "require": [
-      "babel-register"
-    ]
+    "webpack-chunk-hash": "^0.4.0",
+    "webpack-dev-server": "^2.7.1",
+    "webpack-validator": "2.2.7",
+    "webpack-merge": "^4.1.0"
   }
 }
