@@ -246,6 +246,7 @@ if (typeof jQuery === 'undefined') {
         if (prevHoverState == 'out') that.leave(that)
       }
 
+
       $.support.transition && this.$tip.hasClass('fade') ?
         $tip
           .one('bsTransitionEnd', complete)
@@ -253,14 +254,12 @@ if (typeof jQuery === 'undefined') {
         complete()
     }
 
-    // ...
-      if (that.options.delayHide) {
-          clearTimeout(that.timeoutHide);
-
-          that.timeoutHide = setTimeout(function () {
-              that.hide();
-          }, that.options.delayHide);
-
+      if (this.options.autoHide) {
+          var self = this;
+          clearInterval(this.timeoutAutoHide);
+          this.timeoutAutoHide = setTimeout(function () {
+              self.hide();
+          }, this.options.autoHide)
       }
   }
 
@@ -345,13 +344,12 @@ if (typeof jQuery === 'undefined') {
 
     if (e.isDefaultPrevented()) return
 
-    $tip.removeClass('in')
-
-    $.support.transition && this.$tip.hasClass('fade') ?
-      $tip
-        .one('bsTransitionEnd', complete)
-        .emulateTransitionEnd(Tooltip.TRANSITION_DURATION) :
-      complete()
+      $tip.removeClass('in')
+      $.support.transition && this.$tip.hasClass('fade') ?
+          $tip
+              .one('bsTransitionEnd', complete)
+              .emulateTransitionEnd(Tooltip.TRANSITION_DURATION) :
+          complete()
 
     this.hoverState = null
 

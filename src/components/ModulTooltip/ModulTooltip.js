@@ -14,6 +14,7 @@ class ModulTooltip extends React.Component {
         trigger: PropTypes.string,
         container: PropTypes.string,
         autoShow: PropTypes.number,
+        autoHide: PropTypes.number,
         hideOnClickOutside: PropTypes.bool,
         showInitial: PropTypes.bool,
         offset: PropTypes.object
@@ -27,6 +28,7 @@ class ModulTooltip extends React.Component {
         preventHideOnFocus: false,
         container: '',
         autoShow: 0,
+        autoHide: 0,
         showInitial: false,
         hideOnClickOutside: false,
         offset: {
