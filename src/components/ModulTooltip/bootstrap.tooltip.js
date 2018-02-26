@@ -347,7 +347,7 @@ if (typeof jQuery === 'undefined') {
 
     if (e.isDefaultPrevented()) return
 
-    $tip.animate({opacity: 0}, 200, function() {
+    $tip.animate({opacity: 0}, 150, function() {
 
         $tip.css({opacity: 100}).removeClass('in')
         $.support.transition && this.$tip.hasClass('fade') ?
