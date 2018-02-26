@@ -247,11 +247,11 @@ if (typeof jQuery === 'undefined') {
       }
 
 
-        $.support.transition && this.$tip.hasClass('fade') ?
-            $tip
-                .one('bsTransitionEnd', complete)
-                .emulateTransitionEnd(Tooltip.TRANSITION_DURATION) :
-            complete()
+      $.support.transition && this.$tip.hasClass('fade') ?
+        $tip
+          .one('bsTransitionEnd', complete)
+          .emulateTransitionEnd(Tooltip.TRANSITION_DURATION) :
+        complete()
     }
 
       if (this.options.autoHide) {
