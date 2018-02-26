@@ -2,7 +2,6 @@
 const webpack = require('webpack');
 /* eslint-enable */
 const config = require('./webpack/constants')
-const vendor = require('./webpack/vendors')
 const plugins = require('./webpack/plugins')
 const rules = require('./webpack/rules')
 const devServer = require('./webpack/devServer')
@@ -15,10 +14,7 @@ const buildEntryPoint = (point) => {
 module.exports = {
     devtool: config.IS_PRODUCTION ? 'source-map' : 'eval-source-map',
     context: config.jsSourcePath,
-    entry: {
-        vendor,
-        app: buildEntryPoint('./index')
-    },
+    entry: {app: buildEntryPoint('./index')},
     output: {
         path: config.buildPath,
         publicPath: '/',

@@ -1,8 +1,0 @@
-{
-  "api": {
-    "url": "http://localhost"
-  },
-  "host": "localhost",
-  "port": 8080,
-  "markupStyle": "../../Markup.Kassa/markup/stylus/style_kassa.styl"
-}

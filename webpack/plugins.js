@@ -6,20 +6,10 @@ const autoprefixer = require('autoprefixer')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 const WebpackChunkHash = require('webpack-chunk-hash')
 const ExtractTextPlugin = require('extract-text-webpack-plugin')
-const CommonsChunkPlugin = require('../node_modules/webpack/lib/optimize/CommonsChunkPlugin')
 
 const plugins = [
 
     new WebpackChunkHash(),
-    new CommonsChunkPlugin({
-    // The order of this array matters
-        names: ['common', 'vendor'],
-        minChunks: 2
-    }),
-    new CommonsChunkPlugin({
-        name: 'manifest',
-        minChunks: Infinity
-    }),
     new webpack.NoEmitOnErrorsPlugin(),
     new webpack.ProvidePlugin({
         $: 'jquery',

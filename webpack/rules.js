@@ -1,6 +1,5 @@
 const ExtractTextPlugin = require('extract-text-webpack-plugin')
 const config = require('../webpack/constants')
-// const path = require('path');
 
 const rules = [
     {

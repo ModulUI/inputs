@@ -1,9 +1,9 @@
+import 'babel-polyfill';
 import React from 'react'
 import ReactDOM from 'react-dom'
-// import { Router, Route, browserHistory } from 'react-router'
+import { BrowserRouter as Router, Route } from 'react-router-dom'
 import Page from './Page'
-// console.log(__STYLES__)
-// require(__STYLES__)
+
 require(__STYLES__)
 // import 'bootstrap/dist/css/bootstrap.min.css';
 // import 'jquery-datetimepicker/build/jquery.datetimepicker.min.css' //костыль с дизайном
@@ -11,10 +11,8 @@ require(__STYLES__)
 // import 'react-select/dist/react-select.css';
 // import './modal.css';
 
-ReactDOM.render(
-    <Page/>,
-    document.getElementById('container')
-)
-// <Router history={browserHistory}>
-//   <Route path="/" component={Page} />
-// </Router>
+ReactDOM.render((
+    <Router>
+        <Route path="/" component={Page}/>
+    </Router>
+), document.getElementById('container'))

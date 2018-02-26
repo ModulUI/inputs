@@ -21,7 +21,6 @@ const devServer = {
             green: '\u001b[32m'
         }
     }
-    // disableHostCheck: true
 }
 
 module.exports = devServer
