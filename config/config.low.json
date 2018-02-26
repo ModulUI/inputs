@@ -1,0 +1,10 @@
+{
+  "api": {
+    "url": "http://buh-p2.brc.local",
+    "apiUrl": "/apiAdmin"
+  },
+  "demo": "low",
+  "markupBuhgalteria": "../../../Markup.Buhgalteria/markup/stylus/style_buhgalteria.styl",
+  "markupCommon404": "../../../Markup.Common/markup/stylus/404.styl",
+  "markupLogin": "../../../Markup.Buhgalteria/markup/stylus/buhgalteria_page_login.styl"
+}
