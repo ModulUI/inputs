@@ -253,14 +253,12 @@ if (typeof jQuery === 'undefined') {
         complete()
     }
 
-    // ...
-      if (that.options.delayHide) {
-          clearTimeout(that.timeoutHide);
-
-          that.timeoutHide = setTimeout(function () {
-              that.hide();
-          }, that.options.delayHide);
-
+      if (this.options.autoHide) {
+          var self = this;
+          clearInterval(this.timeoutAutoHide);
+          this.timeoutAutoHide = setTimeout(function () {
+              self.hide();
+          }, this.options.autoHide)
       }
   }
 
