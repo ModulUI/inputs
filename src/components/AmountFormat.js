@@ -13,11 +13,11 @@ const CurrencySymbol = ({value}) => {
 	return null;
 };
 
-const AmountFormat = ({value, currency = 'RUR', def = '', className = ''}) => {
+const AmountFormat = ({value, currency = 'RUR', def = '', className = '', precision = 2}) => {
 	if (validateHelper.isEmpty(value))
 		return def ? (<span>{def}</span>) : null;
 	const val = parseFloat(cleanValue(value));
-	const formatted = !isNaN(val) ? accounting.formatNumber(val, 2, " ") : def;
+	const formatted = !isNaN(val) ? accounting.formatNumber(val, precision, " ") : def;
 	return (<span className={className}>{formatted}&nbsp;<CurrencySymbol value={currency}/></span>);
 };
 
