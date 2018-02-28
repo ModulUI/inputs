@@ -11,7 +11,8 @@ const PERIOD = {
     LAST_WEEK: 'LAST_WEEK',
     LAST_MONTH: 'LAST_MONTH',
     LAST_QUARTER: 'LAST_QUARTER',
-    LAST_YEAR: 'LAST_YEAR'
+    LAST_YEAR: 'LAST_YEAR',
+    BEGIN_YEAR_FOR_TODAY: 'BEGIN_YEAR_FOR_TODAY', // сначала года, до текущей даты
 };
 const PERIOD_LABEL = {
     TODAY: 'Сегодня',
@@ -20,7 +21,8 @@ const PERIOD_LABEL = {
     LAST_WEEK: 'Текущая неделя',
     LAST_MONTH: 'Текущий месяц',
     LAST_QUARTER: 'Текущий квартал',
-    LAST_YEAR: 'Весь год'
+    LAST_YEAR: 'Весь год',
+    BEGIN_YEAR_FOR_TODAY: 'Весь год',
 };
 
 function getDateRangeByPeriod(period) {
@@ -47,6 +49,9 @@ function getDateRangeByPeriod(period) {
             break;
         case PERIOD.LAST_YEAR:
             range = dateHelper.getCurrentYearDates(new Date());
+            break;
+        case PERIOD.BEGIN_YEAR_FOR_TODAY:
+            range = dateHelper.getBeginYearForTodayDates(new Date());
             break;
     }
     return {dateFrom: range.startDate, dateTo: range.stopDate};

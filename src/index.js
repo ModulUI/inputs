@@ -15,6 +15,9 @@ import PhoneInput from './components/PhoneInput';
 import Select from './components/Select';
 import ReactTooltip from './components/ReactTooltip'
 import ModulTooltip from './components/ModulTooltip'
+import PassportSeriesInput from './components/PassportSeriesInput'
+import PassportNumberInput from './components/PassportNumberInput'
+import PassportDivizionCodeInput from './components/PassportDivizionCodeInput'
 
 export {
     PhoneInput,
@@ -33,5 +36,8 @@ export {
     SnilsInput,
     Select,
     ReactTooltip,
-    ModulTooltip
+    ModulTooltip,
+    PassportSeriesInput,
+    PassportNumberInput,
+    PassportDivizionCodeInput
 };

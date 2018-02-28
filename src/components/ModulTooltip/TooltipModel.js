@@ -7,6 +7,7 @@ class TooltipModel {
     constructor(props) {
         this._parseOptions(props);
         this._createInstance();
+        this._showOnInit();
         this._runAutoShow();
     }
 
@@ -65,8 +66,10 @@ class TooltipModel {
     }
 
     _runAutoShow() {
-        if (this._options.autoShow && this._options.autoShow > 0) {
-            setTimeout(() => this.show(), this._options.autoShow);
+        if (!this._options.showInitial && this._options.autoShow && this._options.autoShow > 0) {
+            setTimeout(() => {
+                this.show()
+            }, this._options.autoShow);
         }
     }
 
@@ -80,7 +83,7 @@ class TooltipModel {
         const {
             className, getContent, preventHideOnFocus,
             delay, placement, html, trigger, container,
-            content
+            content, autoShow, autoHide, showInitial, offset
         }=props;
 
         const template = `<div class="tooltip ${className}" role="tooltip"><div class="tooltip-arrow"></div><div class="tooltip-inner"></div></div>`;
@@ -88,13 +91,23 @@ class TooltipModel {
         return {
             title: getContent || content,
             preventHideOnFocus: preventHideOnFocus,
-            delay: delay ? {hide: delay} : 0,
+            delay: delay ? {hide : delay} : 0,
             placement: placement,
             html: html || false,
             trigger: trigger,
             container: container,
-            template: template
+            template: template,
+            autoShow: autoShow,
+            autoHide: autoHide,
+            showInitial: showInitial,
+            offset: offset,
         };
+    }
+
+    _showOnInit() {
+        if (this._options.showInitial) {
+            this.show();
+        }
     }
 
     get _tooltip() {

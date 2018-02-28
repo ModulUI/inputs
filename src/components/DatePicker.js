@@ -13,6 +13,7 @@ const datePickerOptions = ['value', 'lang', 'format', 'formatDate', 'formatTime'
 
 class DatePicker extends React.Component {
     static defaultProps = {
+        autoComplete: "on",
         formatDate: 'd.m.Y',
         format: 'd.m.Y',
         yearStart: 2000,
@@ -116,6 +117,7 @@ class DatePicker extends React.Component {
 }
 
 DatePicker.propTypes = {
+    autoComplete: PropTypes.string,
     name: PropTypes.string,
     onChange: PropTypes.func,
     value: PropTypes.any,
