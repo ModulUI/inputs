@@ -76,12 +76,16 @@ export default class AutosuggestInput extends Component {
      * Вызывется при нажатии на крестик для очистки поля
      *    - вернуть boolean
      *    - по умолчанию поле очищается
+     * @returns {boolean}
      */
     onClearValue() {
-        if (this.props.onClearValue)
-            this.props.onClearValue() && this.setState({value: ''});
-        else
-            this.setState({value: ''});
+        if (this.props.onClearValue && !this.props.onClearValue()) {
+            return false;
+        }
+
+        this.props.onChange('');
+        this.setState({ value: '' });
+        this.input && this.input.focus && this.input.focus();
     }
 
     /**
@@ -150,6 +154,15 @@ export default class AutosuggestInput extends Component {
             options,
             ...props
         } = this.props;
+
+        // список наказанных пропсов от input'а
+        delete props.loading;
+        delete props.getOptionsValue;
+        delete props.onFetchRequested;
+        delete props.onClearRequested;
+        delete props.onSelected;
+        delete props.onClearValue;
+        delete props.renderOptions;
 
         const inputProps = {
             ...props,
