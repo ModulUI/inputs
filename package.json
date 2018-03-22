@@ -29,7 +29,7 @@
     "prop-types": "^15.5.8",
     "q": "^1.4.1",
     "react-autosuggest": "^9.3.3",
-    "react-modal": "^1.9.3",
+    "react-modal": "^3.3.2",
     "react-notification-system": "^0.2.14",
     "react-select": "^1.2.0",
     "react-tooltip": "git+https://github.com/benderr/react-tooltip.git#v3.3.5",
