@@ -16,6 +16,7 @@ class NumberInput extends React.Component {
         onChange: (value, event) => {
         }, /*no-op*/
         type: 'tel',
+		mask: '',
         float: false,
         precision: null
     };
@@ -62,9 +63,28 @@ class NumberInput extends React.Component {
             ? trimValidLength(val, ',', this.props.precision) : val;
     }
 
+    parseMask(value) {
+		const matrix = this.props.mask;
+		const def = matrix.replace(/\D/g, "");
+		let i = 0;
+		let val = value.replace(/\D/g, "");
+
+		if (def.length >= val.length)
+			val = def;
+
+		return matrix.replace(/./g, a => {
+			return /[_\d]/.test(a) && i < val.length ? val.charAt(i++) : i >= val.length ? "" : a;
+		});
+    }
+
     handleChange(event) {
         let val = event.target.value;
-        const viewValue = this.parseValue(val);
+        let viewValue = this.parseValue(val);
+
+        if (this.props.mask.length) {
+			viewValue = this.parseMask(viewValue);
+        }
+
         this.setState({viewValue}, () => {
             this.props.onChange(viewValue, event);
         });
@@ -72,6 +92,11 @@ class NumberInput extends React.Component {
 
     render() {
         let props = {...this.props};
+
+        if (props.mask.length && props.maxLength) {
+			props.maxLength = props.mask.length;
+        }
+
         delete props.onChange;
         delete props.value;
         delete props.float;
@@ -88,6 +113,7 @@ class NumberInput extends React.Component {
 }
 
 NumberInput.propTypes = {
+    mask: PropTypes.string,
     value: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
     onChange: PropTypes.func.isRequired,
     float: PropTypes.bool, //с запятой или без
