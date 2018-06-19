@@ -77,7 +77,7 @@ export default class Page extends Component {
                     <form role="form" onSubmit={this.handleSubmit}>
                         <div className="form_group">
                             <div className="input_group_title">
-                                <NumberInput class="form-control"/>
+                                <NumberInput class="form-control" mask={'___ ___'}/>
                                 <span class="input_title">Number</span>
                             </div>
                         </div>
