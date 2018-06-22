@@ -77,7 +77,7 @@ class DatePicker extends React.Component {
     }
 
     isEqualDates(a, b) {
-        return (a && b && a.getTime() === b.getTime()) || a === b || (validateHelper.isEmpty(a) && validateHelper.isEmpty(b));
+        return (a && b && a.getTime && b.getTime && a.getTime() === b.getTime()) || a === b || (validateHelper.isEmpty(a) && validateHelper.isEmpty(b));
     }
 
     getDatePickerOptions() {
