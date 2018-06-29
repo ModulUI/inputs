@@ -32,6 +32,7 @@ class TooltipModel {
     update(props) {
         const element = this._getTip(props.dataFor);
         if (this._equalInstance(element, this._element)) {
+            this.setContent();
             this.updatePlacement();
         }
         else {
@@ -54,7 +55,7 @@ class TooltipModel {
     }
 
     _parseOptions(props) {
-        const {dataFor, ...other}=props;
+        const {dataFor, ...other} = props;
         this._options = this._getOptions(other);
         this._dataFor = dataFor;
     }
@@ -88,14 +89,14 @@ class TooltipModel {
             className, getContent, preventHideOnFocus,
             delay, placement, html, trigger, container,
             content, autoShow, autoHide, showInitial, offset
-        }=props;
+        } = props;
 
         const template = `<div class="tooltip ${className}" role="tooltip"><div class="tooltip-arrow"></div><div class="tooltip-inner"></div></div>`;
 
         return {
             title: getContent || content,
             preventHideOnFocus: preventHideOnFocus,
-            delay: delay ? {hide : delay} : 0,
+            delay: delay ? {hide: delay} : 0,
             placement: placement,
             html: html || false,
             trigger: trigger,
