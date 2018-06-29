@@ -63,12 +63,12 @@ export default class Page extends Component {
         })
     }
 
-    getTooltipContent() {
-        return 'test ' + new Date();
+    getTooltipContent = () => {
+        return 'test <a href="#">контент</a> ' + new Date();
     }
 
     render() {
-        const {dateFrom, dateTo, selected, notifications, message}=this.state || {};
+        const {dateFrom, dateTo, selected, notifications, message} = this.state || {};
         const options = [{value: 1, label: 'option 1'}];
         return (
             <section className="section_content full_width">
@@ -117,7 +117,7 @@ export default class Page extends Component {
                             <div className="input_group_title w100">
                                 <div className="input_title">Select</div>
                                 {/*<Select options={options} value={selected} className="w100"*/}
-                                        {/*onChange={(val) => this.handleSelect(val)}/>*/}
+                                {/*onChange={(val) => this.handleSelect(val)}/>*/}
                             </div>
                         </div>
 
@@ -156,7 +156,12 @@ export default class Page extends Component {
                     <h3>Нотификаторы</h3>
                     <div>
                         <button class="button small second"
-                                onClick={() => this.handleShowNotify(notifyFactory.success('Success message'))}>Success
+                                onClick={() => this.handleShowNotify(notifyFactory.create({
+                                    message: '<a href="https://ya.ru">Success message</a> test',
+                                    position: 'bl',
+                                    autoDismiss: 5,
+                                    allowHTML: true
+                                }))}>Success
                         </button>
                         <button class="button small error" style={{marginLeft: '10px'}}
                                 onClick={() => this.handleShowNotify(notifyFactory.error('Error message'))}>Error
@@ -168,6 +173,7 @@ export default class Page extends Component {
                                 onClick={() => this.handleShowNotify(notifyFactory.warning('Warn message'))}>Warn
                         </button>
                         <NotifyService notifications={notifications}
+                                       allowHTML={true}
                                        onRemove={::this.handleRemoveNotify}/>
                     </div>
                 </div>
@@ -177,10 +183,10 @@ export default class Page extends Component {
                     <AutosuggestInput
                         name='autosuggest'
                         options={[
-                            { value: 'Уфа' },
-                            { value: 'Москва' },
-                            { value: 'Екатеринбург' },
-                            { value: 'Казань' },
+                            {value: 'Уфа'},
+                            {value: 'Москва'},
+                            {value: 'Екатеринбург'},
+                            {value: 'Казань'},
                         ]}
                         loading={true}
                         value='Самара'
@@ -189,7 +195,10 @@ export default class Page extends Component {
                         onFetchRequested={(val) => console.log('Запросить', val)}
                         onClearRequested={() => console.log('Очистить список')}
                         onSelected={(data) => console.log('Выбран из списка', data)}
-                        onClearValue={() => { console.log('Перед очисткой поля'); return true }}
+                        onClearValue={() => {
+                            console.log('Перед очисткой поля');
+                            return true
+                        }}
                         renderOptions={(options, query) => <span>+{options.value}</span>}
                         onChange={(val) => console.log('onChange', val)}
                         onBlur={(e) => console.log('onBlur', e)}
@@ -253,7 +262,8 @@ export default class Page extends Component {
                     <ModulTooltip placement="bottom"
                                   preventHideOnFocus={true}
                                   delay={100}
-                                  getContent={::this.getTooltipContent}
+                                  html={true}
+                                  getContent={this.getTooltipContent}
                                   dataFor="test6"/>
 
                 </div>

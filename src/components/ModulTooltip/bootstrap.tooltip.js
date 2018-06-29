@@ -168,6 +168,45 @@ if (typeof jQuery === 'undefined') {
     }, self.options.delay.hide)
   }
 
+  Tooltip.prototype.updatePlacement = function () {
+      var $tip = this.tip();
+
+      var placement = typeof this.options.placement == 'function' ?
+          this.options.placement.call(this, $tip[0], this.$element[0]) :
+          this.options.placement;
+
+      var autoToken = /\s?auto?\s?/i
+      var autoPlace = autoToken.test(placement);
+      if (autoPlace)
+          placement = placement.replace(autoToken, '') || 'top';
+
+      $tip.addClass(placement);
+
+      var pos          = this.getPosition();
+      var actualWidth  = $tip[0].offsetWidth;
+      var actualHeight = $tip[0].offsetHeight;
+
+      if (autoPlace) {
+          var orgPlacement = placement;
+          var $container   = this.options.container ? $(this.options.container) : this.$element.parent();
+          var containerDim = this.getPosition($container);
+
+          placement = placement == 'bottom' && pos.bottom + actualHeight > containerDim.bottom ? 'top'    :
+              placement == 'top'    && pos.top    - actualHeight < containerDim.top    ? 'bottom' :
+                  placement == 'right'  && pos.right  + actualWidth  > containerDim.width  ? 'left'   :
+                      placement == 'left'   && pos.left   - actualWidth  < containerDim.left   ? 'right'  :
+                          placement;
+
+          $tip
+              .removeClass(orgPlacement)
+              .addClass(placement)
+      }
+
+      var calculatedOffset = this.getCalculatedOffset(placement, pos, actualWidth, actualHeight, this.options.offset)
+
+      this.applyPlacement(calculatedOffset, placement)
+  };
+
   Tooltip.prototype.show = function () {
     var e = $.Event('show.bs.' + this.type)
 

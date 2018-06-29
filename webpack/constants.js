@@ -5,7 +5,7 @@ const appConfig = {
     },
     'host': 'localhost',
     'port': 8080,
-    'markupStyle': '../../Markup.Kassa/markup/stylus/style_kassa.styl'
+    'markupStyle': '../../../Markup.Kassa/markup/stylus/style_kassa.styl'
 }
 const NODE_ENV = process.env.NODE_ENV || 'development'
 const IS_DEVELOPMENT = NODE_ENV === 'development'
