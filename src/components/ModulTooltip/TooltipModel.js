@@ -25,10 +25,14 @@ class TooltipModel {
         this._element && this._element.tooltip('setContent');
     }
 
+    updatePlacement() {
+        this._element && this._element.tooltip('updatePlacement');
+    }
+
     update(props) {
         const element = this._getTip(props.dataFor);
         if (this._equalInstance(element, this._element)) {
-            this.setContent();
+            this.updatePlacement();
         }
         else {
             this._parseOptions(props);
