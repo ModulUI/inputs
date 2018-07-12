@@ -18,6 +18,7 @@ import ModulTooltip from './components/ModulTooltip'
 import PassportSeriesInput from './components/PassportSeriesInput'
 import PassportNumberInput from './components/PassportNumberInput'
 import PassportDivizionCodeInput from './components/PassportDivizionCodeInput'
+import Table from './components/Table'
 
 export {
     PhoneInput,
@@ -39,5 +40,6 @@ export {
     ModulTooltip,
     PassportSeriesInput,
     PassportNumberInput,
-    PassportDivizionCodeInput
+	PassportDivizionCodeInput,
+	Table
 };
