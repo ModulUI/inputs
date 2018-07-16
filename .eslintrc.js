@@ -1,6 +1,8 @@
 module.exports = {
-    "extends": "standard",
-    "rules": {
-        indent: ["error", 4, { ImportDeclaration: "first" }]
-    }
+	"extends": "standard",
+
+	"rules": {
+		indent: ["error", "tab", { ImportDeclaration: "first" }],
+		'no-tabs': [0]
+	}
 };

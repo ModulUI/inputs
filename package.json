@@ -33,6 +33,7 @@
     "react-notification-system": "^0.2.14",
     "react-select": "^1.2.0",
     "react-tooltip": "git+https://github.com/benderr/react-tooltip.git#v3.3.5",
+    "react-waypoint": "^8.0.3",
     "tether-drop": "^1.4.2"
   },
   "peerDependencies": {

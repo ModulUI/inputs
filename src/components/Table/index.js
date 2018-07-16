@@ -1,18 +1,8 @@
-import Table from './Table';
-import Tr from './Tr';
-import Thead from './Thead';
-import Tbody from './Tbody';
-import Td from './Td';
-import Th from './Th';
-import Caption from './Caption';
-import SearchInput from './SearchInput';
+import Table from './Table'
+import Tbody from './Tbody'
+import Th from './Th'
 
-Table.Tr = Tr;
-Table.Thead = Thead;
-Table.Tbody = Tbody;
-Table.Td = Td;
-Table.Th = Th;
-Table.Caption = Caption;
-Table.SearchInput = SearchInput;
+Table.Tbody = Tbody
+Table.Th = Th
 
-export default Table;
+export default Table

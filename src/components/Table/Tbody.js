@@ -1,29 +1,54 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import Tr from './Tr';
-import Td from './Td';
+import Waypoint from 'react-waypoint';
 import classnames from 'classnames';
 
 const Tbody = props => <tbody className={classnames(props.className)}>
+	{props.search && <tr id="search">
+		<td colSpan={props.columnsNumber}>
+			<input
+				type="search"
+				value={props.search.value}
+				className={props.search.inputClassName}
+				placeholder={props.search.placeholder}
+				onChange={props.search.onChange}
+			/>
+		</td>
+	</tr>}
+
 	{props.children}
 
-	{props.isEmptyMessageRowShown && <Tr className="no_search_results">
-		<Td colSpan={props.fullRowColSpan} className="light_block">{props.emptyMessage}</Td>
-	</Tr>}
+	{props.isEmptyMessageRowShown && <tr className="no_search_results">
+		<td colSpan={props.columnsNumber} className="light_block">{props.emptyMessage}</td>
+	</tr>}
 
-	{props.isLoadingRowShown && <Tr className="loading_block_row">
-		<Td colSpan={props.fullRowColSpan} className="loading_block" />
-	</Tr>}
+	{props.isLoadingRowShown && <tr className="loading_block_row">
+		<td colSpan={props.columnsNumber} className="loading_block" />
+	</tr>}
 
+	{(props.loadNext && props.listLength < props.listTotalCount) && <Waypoint onEnter={props.loadNext} />}
 </tbody>
 
 Tbody.propTypes = {
 	children: PropTypes.any,
 	className: PropTypes.string,
-	fullRowColSpan: PropTypes.string,
+	columnsNumber: PropTypes.number.isRequired,
 	isLoadingRowShown: PropTypes.bool,
 	isEmptyMessageRowShown: PropTypes.bool,
-	emptyMessage: PropTypes.string
+	emptyMessage: PropTypes.string,
+	listLength: PropTypes.number,
+	listTotalCount: PropTypes.number,
+
+	search: PropTypes.shape({
+		value: PropTypes.string.isRequired,
+		onChange: PropTypes.func.isRequired,
+		placeholder: PropTypes.string,
+		inputClassName: PropTypes.string
+	})
 }
 
-export default Tbody;
+Tbody.defaultProps = {
+	emptyMessage: 'По запросу ничего не найдено'
+}
+
+export default Tbody
