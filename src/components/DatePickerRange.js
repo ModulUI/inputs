@@ -119,7 +119,7 @@ class DatePickerRange extends React.Component {
         return (<Drop drop={{position: position}}
 					  setInstance={::this.initDropInstance}>
 			<a className={'drop-target icon-date button ' + className}>{title}</a>
-			<div className="drop-content" data-ignore={ignoreDropCloseAttr}>
+			<div className="drop-content-another" data-ignore={ignoreDropCloseAttr}>
 				<div className="drop-content-inner dashboard-period-choose">
 
 					<ul className="drop-menu">
