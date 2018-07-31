@@ -100,15 +100,15 @@ class DatePickerRange extends React.Component {
     }
 
     render() {
-        const {ignoreDropCloseAttr, dateFrom, dateTo, className, periods, position = "bottom left"}=this.props;
+        const {ignoreDropCloseAttr, dateFrom, dateTo, className, periods, position = "bottom left", placeholder}=this.props;
 
         const dateFromStr = dateFrom ? dateHelper.dateFormat(dateFrom, 'd mmmm:R') : '';
         const dateToStr = dateTo ? dateHelper.dateFormat(dateTo, 'd mmmm:R') : '';
 
         const list = periods || Object.keys(PERIOD);
 
-        let title = 'Выберите период';
-        if (dateFrom || dateTo) {
+        let title = placeholder || 'Выберите период';
+        if (!placeholder && (dateFrom || dateTo)) {
             title = '';
             if (dateFrom)
                 title = `с ${dateFromStr} `;
@@ -156,6 +156,7 @@ DatePickerRange.propTypes = {
     dateTo: PropTypes.any,
     position: PropTypes.string,
     periods: PropTypes.array,
+    placeholder: PropTypes.string
 };
 
 export default DatePickerRange;
