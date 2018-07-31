@@ -153,6 +153,7 @@ class DatePickerRange extends React.Component {
 DatePickerRange.propTypes = {
     setDropInstance: PropTypes.func,
     onChange: PropTypes.func,
+    onBlur: PropTypes.func,
     ignoreDropCloseAttr: PropTypes.string,
     dateFrom: PropTypes.any,
     dateTo: PropTypes.any,
