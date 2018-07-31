@@ -60,8 +60,8 @@ function getDateRangeByPeriod(period) {
 
 class DatePickerRange extends React.Component {
     static defaultProps = {
-        onChange: () => {
-        },
+        onChange: () => {},
+        onBlur: () => {},
         ignoreDropCloseAttr: '',
         className: 'light small',
         periods: null
@@ -76,6 +76,7 @@ class DatePickerRange extends React.Component {
     handleSelectPeriod(period) {
         const dateRange = getDateRangeByPeriod(period);
         this.props.onChange(dateRange);
+        this.props.onBlur(dateRange);
     }
 
     handleChangeDateFrom(date) {
@@ -93,10 +94,11 @@ class DatePickerRange extends React.Component {
     }
 
     handleSelectDateRange() {
-        this.props.onChange({
-            dateFrom: this.dropFrom.getValue(),
-            dateTo: this.dropTo.getValue()
-        });
+        const dateFrom = this.dropFrom.getValue();
+        const dateTo   = this.dropTo.getValue();
+        const period   = {dateFrom, dateTo};
+        this.props.onChange(period);
+        this.props.onBlur(period);
     }
 
     render() {
@@ -151,6 +153,7 @@ class DatePickerRange extends React.Component {
 DatePickerRange.propTypes = {
     setDropInstance: PropTypes.func,
     onChange: PropTypes.func,
+    onBlur: PropTypes.func,
     ignoreDropCloseAttr: PropTypes.string,
     dateFrom: PropTypes.any,
     dateTo: PropTypes.any,
