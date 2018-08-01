@@ -24,6 +24,13 @@ const PERIOD_LABEL = {
     LAST_YEAR: 'Весь год',
     BEGIN_YEAR_FOR_TODAY: 'Весь год',
 };
+const PERIOD_DEFAULT = [
+    PERIOD.TODAY,
+    PERIOD.YESTERDAY,
+    PERIOD.LAST_WEEK,
+    PERIOD.LAST_MONTH,
+    PERIOD.BEGIN_YEAR_FOR_TODAY
+];
 
 function getDateRangeByPeriod(period) {
     let range;
@@ -102,12 +109,16 @@ class DatePickerRange extends React.Component {
     }
 
     render() {
-        const {ignoreDropCloseAttr, dateFrom, dateTo, className, periods, position = "bottom left", placeholder}=this.props;
+        const {
+            ignoreDropCloseAttr, dateFrom, dateTo, className, placeholder,
+            periods = PERIOD_DEFAULT,
+            position = "bottom left",
+        } = this.props;
 
         const dateFromStr = dateFrom ? dateHelper.dateFormat(dateFrom, 'd mmmm:R') : '';
         const dateToStr = dateTo ? dateHelper.dateFormat(dateTo, 'd mmmm:R') : '';
 
-        const list = periods || Object.keys(PERIOD);
+        const list = periods;
 
         let title = placeholder || 'Выберите период';
         if (!placeholder && (dateFrom || dateTo)) {
