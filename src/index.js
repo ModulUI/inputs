@@ -3,6 +3,7 @@ import AmountInput from './components/AmountInput';
 import Button from './components/Button';
 import DateFormat from './components/DateFormat';
 import DatePicker from './components/DatePicker';
+import DatePickerDrop from './components/DatePickerDrop';
 import DatePickerRange from './components/DatePickerRange';
 import Drop from './components/Drop';
 import Drop2 from './components/Drop2';
@@ -26,6 +27,7 @@ export {
     Button,
     DateFormat,
     DatePicker,
+    DatePickerDrop,
     DatePickerRange,
     Drop,
     Drop2,
