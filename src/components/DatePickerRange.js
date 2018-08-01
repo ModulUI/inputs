@@ -70,8 +70,7 @@ class DatePickerRange extends React.Component {
         onChange: () => {},
         onBlur: () => {},
         ignoreDropCloseAttr: '',
-        className: 'light small',
-        periods: null
+        className: 'light small'
     };
     static PERIODS = PERIOD;
     initDropInstance(drop) {

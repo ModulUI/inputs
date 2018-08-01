@@ -26,15 +26,27 @@ function getDateByPeriod(period) {
 }
 
 
-class DatePickerDrop extends React.Component {
+export default class DatePickerDrop extends React.Component {
+    static propTypes = {
+        setDropInstance: PropTypes.func,
+        onChange: PropTypes.func,
+        onBlur: PropTypes.func,
+        ignoreDropCloseAttr: PropTypes.string,
+        date: PropTypes.any,
+        position: PropTypes.string,
+        periods: PropTypes.array,
+        placeholder: PropTypes.string
+    };
+
     static defaultProps = {
         onChange: () => {},
         onBlur: () => {},
         ignoreDropCloseAttr: '',
-        className: 'light small',
-        periods: null
+        className: 'light small'
     };
+
     static PERIODS = PERIOD;
+
     initDropInstance(drop) {
         const {setDropInstance} = this.props;
         if (setDropInstance) setDropInstance(drop);
@@ -95,16 +107,3 @@ class DatePickerDrop extends React.Component {
 		</Drop>);
     }
 }
-
-DatePickerRange.propTypes = {
-    setDropInstance: PropTypes.func,
-    onChange: PropTypes.func,
-    onBlur: PropTypes.func,
-    ignoreDropCloseAttr: PropTypes.string,
-    date: PropTypes.any,
-    position: PropTypes.string,
-    periods: PropTypes.array,
-    placeholder: PropTypes.string
-};
-
-export default DatePickerDrop;
