@@ -9,7 +9,7 @@ const datePickerOptions = ['value', 'lang', 'format', 'formatDate', 'formatTime'
     'closeOnDateSelect', 'timepicker', 'datepicker', 'weeks', 'minDate', 'maxDate', 'startDate',
     'defaultDate', 'defaultTime', 'todayButton', 'defaultSelect', 'yearStart', 'yearEnd', 'disabledDates',
     'allowDates', 'allowDateRe', 'disabledWeekDays', 'id', 'inline', 'scrollMonth', 'scrollInput',
-    'scrollTime', 'dayOfWeekStart'];
+    'scrollTime', 'dayOfWeekStart', 'mask'];
 
 class DatePicker extends React.Component {
     static defaultProps = {
