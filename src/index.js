@@ -7,6 +7,7 @@ import DatePickerDrop from './components/DatePickerDrop';
 import DatePickerRange from './components/DatePickerRange';
 import Drop from './components/Drop';
 import Drop2 from './components/Drop2';
+import DropZone from './components/DropZone';
 import LoaderBlock from './components/LoaderBlock';
 import LoaderPanel from './components/LoaderPanel';
 import NumberFormat from './components/NumberFormat';
@@ -31,6 +32,7 @@ export {
     DatePickerRange,
     Drop,
     Drop2,
+    DropZone,
     LoaderBlock,
     LoaderPanel,
     NumberFormat,
@@ -41,5 +43,5 @@ export {
     ModulTooltip,
     PassportSeriesInput,
     PassportNumberInput,
-    PassportDivizionCodeInput
+    PassportDivizionCodeInput,
 };
