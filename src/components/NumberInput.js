@@ -26,12 +26,24 @@ class NumberInput extends React.Component {
     }
 
     componentDidMount() {
-        this.setState({viewValue: this.parseValue(this.props.value)});
+        this.setState({viewValue: this.parseValue({
+            value: this.props.value,
+            float: this.props.float,
+            precision: this.props.precision
+        })});
     }
 
-    componentWillReceiveProps(props) {
-        if (props && !this.isEqualValues(this.state.viewValue, props.value)) {
-            this.setState({viewValue: this.parseValue(props.value)});
+    componentWillReceiveProps(nextProps) {
+        if (
+            !this.isEqualValues(this.state.viewValue, nextProps.value) ||
+            this.props.float !== nextProps.float ||
+            this.props.precision !== nextProps.precision
+        ) {
+            this.setState({viewValue: this.parseValue({
+                value: nextProps.value,
+                float: nextProps.float,
+                precision: nextProps.precision
+            })});
         }
     }
 
@@ -50,17 +62,19 @@ class NumberInput extends React.Component {
     //         val = val.toString();
     //     return cleanValue(val, this.props.float);
     // }
-    parseValue(val) {
-        if (val === undefined || val === null)
-            val = '';
 
-        if (!val.replace)
-            val = val.toString();
+    parseValue({value, float, precision}) {
+        if (value === undefined || value === null)
+            value = '';
 
-        val = cleanValue(val, this.props.float);
+        if (!value.replace)
+            value = value.toString();
 
-        return this.props.float && this.props.precision
-            ? trimValidLength(val, ',', this.props.precision) : val;
+        value = cleanValue(value, float);
+
+        return float && precision
+            ? trimValidLength(value, ',', precision)
+            : value;
     }
 
     parseMask(value) {
@@ -79,7 +93,12 @@ class NumberInput extends React.Component {
 
     handleChange(event) {
         let val = event.target.value;
-        let viewValue = this.parseValue(val);
+
+        let viewValue = this.parseValue({
+            value: val,
+            float: this.props.float,
+            precision: this.props.precision
+        });
 
         if (this.props.mask.length) {
 			viewValue = this.parseMask(viewValue);
