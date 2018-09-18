@@ -10,7 +10,7 @@ class DropZone extends React.Component {
         acceptStyle: PropTypes.object,
         activeClassName: PropTypes.string,
         activeStyle: PropTypes.object,
-        children: PropTypes.arrayOf(PropTypes.node),
+        children: PropTypes.oneOfType([PropTypes.arrayOf(PropTypes.node), PropTypes.node]),
         className: PropTypes.string,
         disableClick: PropTypes.bool,
         disablePreview: PropTypes.bool,
@@ -44,7 +44,7 @@ class DropZone extends React.Component {
         acceptStyle: {},
         activeClassName: '',
         activeStyle: {},
-        children: [],
+        children: null,
         className: '',
         disableClick: false,
         disablePreview: false,
@@ -101,7 +101,7 @@ class DropZone extends React.Component {
                 {...props}
             >
                 {
-                    children.length
+                    children
                     ? children
                     : <div className="file_upload_block col full">
                         {this.state.fileNames.join(' ')}
