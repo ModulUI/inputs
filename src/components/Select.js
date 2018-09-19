@@ -93,6 +93,7 @@ class Select extends React.Component {
       ...props
     } = this.props;
     const additionalProps = {onBlurResetsInput, openOnFocus, noResultsText, searchable}
+    const value = props.value || props.selectValue || undefined;
     if (creatable || props.loadOptions) {
       let SelectComponent;
       if(creatable && props.loadOptions){
@@ -103,11 +104,15 @@ class Select extends React.Component {
       return (<SelectComponent ref={s => this.el = s}
                                promptTextCreator={promptTextCreator}
                                {...props}
-                               {...additionalProps}/>);
+                               {...additionalProps}
+                               value={value}
+                               />);
     } else {
       return (<Selector ref={s => this.el = s}
                         {...props}
-                        {...additionalProps}/>);
+                        {...additionalProps}
+                        value={value}
+                        />);
     }
   }
 
