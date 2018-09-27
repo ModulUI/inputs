@@ -49,8 +49,14 @@ function calculateStart(start, originValue, formattedValue) {
     for (let i = 0, len = substr.length; i < len; i++) {
         regex += substr[i] + ' {0,1}'
     }
+
     const match = new RegExp(regex).exec(formattedValue);
-    return match && match[0].length || 0;
+
+    return match
+        ? match[0].length
+
+        // сработает когда formattedValue меньше originValue
+        : start - ((originValue || '').length - (formattedValue || '').length);
 }
 
 function parseFloatOrNull(val) {
