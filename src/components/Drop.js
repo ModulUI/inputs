@@ -71,12 +71,7 @@ class Drop extends React.Component {
         const opts = Object.assign({
             target: this.dropRef,
         }, outOptions);
-        opts.content = () => {
-            const content = this.getDropContent();
-            const component = React.cloneElement(content, content.props, this.bindCloseEvent(content));
-            ReactDOM.render(component, this.container);
-            return this.container;
-        };
+        opts.content = () => this.container;
         this.drop = new TetherDrop(opts);
     }
 
@@ -124,7 +119,7 @@ class Drop extends React.Component {
 
         return React.cloneElement(targetLink, {
             ref: ::this.setRef
-        });
+        }, ReactDOM.createPortal(this.getDropContent(), this.container));
     }
 }
 
