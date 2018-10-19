@@ -53,7 +53,8 @@ class ConfirmPopup extends React.Component {
 			cancelName,
 			disableClose = false,
 			text:propText,
-			className = ''
+            className = '',
+            okClassName = '',
 		}=this.props;
 
 		const title = stateTitle || propTitle;
@@ -72,7 +73,7 @@ class ConfirmPopup extends React.Component {
 						{title && <h1>{title}</h1>}
 						{text && <p>{text}</p>}
 						<div class="popup_panel">
-							<button class="button" onClick={::this.handleOkClick}>{okName}</button>
+							<button class={`button ${okClassName}`} onClick={::this.handleOkClick}>{okName}</button>
 							{cancelName && <a class="button_clean" onClick={::this.handleCancelClick}>{cancelName}</a>}
 						</div>
 					</div>
