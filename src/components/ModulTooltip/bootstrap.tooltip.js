@@ -202,7 +202,7 @@ if (typeof jQuery === 'undefined') {
               .addClass(placement)
       }
 
-      var calculatedOffset = this.getCalculatedOffset(placement, pos, actualWidth, actualHeight, this.options.offset)
+      var calculatedOffset = this.getCalculatedOffset(placement, pos, actualWidth, actualHeight, this.options.offset || { top: 0, left: 0 })
 
       this.applyPlacement(calculatedOffset, placement)
   };
