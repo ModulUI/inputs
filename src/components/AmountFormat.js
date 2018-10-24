@@ -13,7 +13,7 @@ const CurrencySymbol = ({value}) => {
 	return null;
 };
 
-const AmountFormat = ({value, currency = 'RUR', def = '', className = '', precision = 2}) => {
+const AmountFormat = ({value, currency, def = '', className = '', precision = 2}) => {
 	if (validateHelper.isEmpty(value))
 		return def ? (<span>{def}</span>) : null;
 	const val = parseFloat(cleanValue(value));
@@ -27,7 +27,6 @@ function cleanValue(val) {
 
 AmountFormat.propTypes = {
 	value: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
-	currency: PropTypes.oneOf(['RUR', 'USD', 'EUR']),
 	def: PropTypes.string,
 	className: PropTypes.string
 };
