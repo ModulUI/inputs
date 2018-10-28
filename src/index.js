@@ -20,6 +20,7 @@ import ModulTooltip from './components/ModulTooltip'
 import PassportSeriesInput from './components/PassportSeriesInput'
 import PassportNumberInput from './components/PassportNumberInput'
 import PassportDivizionCodeInput from './components/PassportDivizionCodeInput'
+import MaskedInputControl from './components/MaskedInput';
 
 export {
     PhoneInput,
@@ -44,4 +45,5 @@ export {
     PassportSeriesInput,
     PassportNumberInput,
     PassportDivizionCodeInput,
+    MaskedInputControl,
 };
