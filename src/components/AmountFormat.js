@@ -27,7 +27,7 @@ function cleanValue(val) {
 
 AmountFormat.propTypes = {
 	value: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
-	currency: PropTypes.oneOf(['RUR', 'USD', 'EUR']),
+	currency: PropTypes.oneOf([null,'','RUR', 'USD', 'EUR']),
 	def: PropTypes.string,
 	className: PropTypes.string
 };
