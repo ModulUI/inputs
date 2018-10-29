@@ -125,7 +125,9 @@ class DatePickerRange extends React.Component {
             if (dateFrom)
                 title = `с ${dateFromStr} `;
             if (dateTo)
-                title += `по ${dateToStr}`;
+                title += `по1 ${dateToStr}`;
+            if (dateFromStr === dateToStr)
+                title = `за ${dateFromStr}`;
         }
 
         return (<Drop drop={{position: position}}
