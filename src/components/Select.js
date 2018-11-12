@@ -127,7 +127,7 @@ class Select extends React.Component {
     }
 
     inFocus() {
-        this.el && this.el.inFocus;
+        // this.el && this.el.inFocus;
     }
 }
 
