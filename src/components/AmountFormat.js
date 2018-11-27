@@ -10,10 +10,13 @@ const CurrencySymbol = ({value}) => {
 		return (<span class="cur dollar"><span>$</span></span>);
 	if (value == 'EUR')
 		return (<span class="cur euro"><span>€</span></span>);
+	if (value == 'CNY')
+		return (<span class="cur cny"><span>¥</span></span>);
 	return null;
 };
 
 const AmountFormat = ({value, currency = 'RUR', def = '', className = '', precision = 2}) => {
+	console.log(currency)
 	if (validateHelper.isEmpty(value))
 		return def ? (<span>{def}</span>) : null;
 	const val = parseFloat(cleanValue(value));
@@ -27,7 +30,7 @@ function cleanValue(val) {
 
 AmountFormat.propTypes = {
 	value: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
-	currency: PropTypes.oneOf([null,'','RUR', 'USD', 'EUR']),
+	currency: PropTypes.oneOf([null,'','RUR', 'USD', 'EUR', 'CNY']),
 	def: PropTypes.string,
 	className: PropTypes.string
 };
