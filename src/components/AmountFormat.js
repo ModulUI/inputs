@@ -16,7 +16,6 @@ const CurrencySymbol = ({value}) => {
 };
 
 const AmountFormat = ({value, currency = 'RUR', def = '', className = '', precision = 2}) => {
-	console.log(currency)
 	if (validateHelper.isEmpty(value))
 		return def ? (<span>{def}</span>) : null;
 	const val = parseFloat(cleanValue(value));
