@@ -82,7 +82,7 @@ class Select extends React.Component {
         creatable: PropTypes.bool, 			  // если можно вводить свой вариант (текст)
     };
 
-	// Decides if a keyDown event (eg its `keyCode`) should result in the creation of a new option.
+	// Решает, должно ли событие keyDown (например, его «keyCode») создать новую опцию.
 	shouldKeyDownEventCreateNewOption = event => {
 		switch (event.keyCode) {
 			case 9: // TAB
