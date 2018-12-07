@@ -82,6 +82,18 @@ class Select extends React.Component {
         creatable: PropTypes.bool, 			  // если можно вводить свой вариант (текст)
     };
 
+	// Decides if a keyDown event (eg its `keyCode`) should result in the creation of a new option.
+	shouldKeyDownEventCreateNewOption = event => {
+		switch (event.keyCode) {
+			case 9: // TAB
+			case 13: // ENTER
+			// case 188: // COMMA
+				return true;
+			default:
+				return false;
+		}
+    };
+
     render() {
         let {
             searchable = false,
@@ -104,12 +116,14 @@ class Select extends React.Component {
             }
             return (
                 <div {...inputProps}>
-                    <SelectComponent ref={s => this.el = s}
-                                     promptTextCreator={promptTextCreator}
-                                     {...props}
-                                     {...additionalProps}
-                                     value={value}
-                    />
+					<SelectComponent
+						ref={s => this.el = s}
+						shouldKeyDownEventCreateNewOption={this.shouldKeyDownEventCreateNewOption}
+						promptTextCreator={promptTextCreator}
+						{...props}
+						{...additionalProps}
+						value={value}
+					/>
                 </div>);
         } else {
             return (<div {...inputProps}>

@@ -152,6 +152,29 @@ export default class Page extends Component {
                     </div>
                 </div>
 
+				<div className="m_top_20">
+					<h3>Select</h3>
+					<div>
+						<Select
+							options={[
+								{value: '0', label: 'Первый'},
+								{value: '1', label: 'Второй'},
+								{value: '2', label: 'Третий'},
+							]}
+						/>
+						<Select
+							searchable
+							clearable
+							creatable
+							options={[
+								{value: '0', label: 'Первый'},
+								{value: '1', label: 'Второй'},
+								{value: '2', label: 'Третий'},
+							]}
+						/>
+					</div>
+				</div>
+
                 <div className="m_top_20">
                     <h3>Нотификаторы</h3>
                     <div>
