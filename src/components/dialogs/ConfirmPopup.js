@@ -74,7 +74,7 @@ class ConfirmPopup extends React.Component {
 						{text && <p>{text}</p>}
 						<div class="popup_panel">
 							<button class={`button ${btnsClassName}`} onClick={::this.handleOkClick}>{okName}</button>
-							{cancelName && <button {`button clean ${btnsClassName}`} onClick={::this.handleCancelClick}>{cancelName}</button>}
+							{cancelName && <button class={`button clean ${btnsClassName}`} onClick={::this.handleCancelClick}>{cancelName}</button>}
 						</div>
 					</div>
 				</div>
