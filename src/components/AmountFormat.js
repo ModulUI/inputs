@@ -10,6 +10,8 @@ const CurrencySymbol = ({value}) => {
 		return (<span class="cur dollar"><span>$</span></span>);
 	if (value == 'EUR')
 		return (<span class="cur euro"><span>€</span></span>);
+	if (value == 'CNY')
+		return (<span class="cur cny"><span>¥</span></span>);
 	return null;
 };
 
@@ -27,7 +29,7 @@ function cleanValue(val) {
 
 AmountFormat.propTypes = {
 	value: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
-	currency: PropTypes.oneOf([null,'','RUR', 'USD', 'EUR']),
+	currency: PropTypes.oneOf([null,'','RUR', 'USD', 'EUR', 'CNY']),
 	def: PropTypes.string,
 	className: PropTypes.string
 };

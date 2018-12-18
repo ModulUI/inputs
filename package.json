@@ -1,6 +1,6 @@
 {
   "name": "modul-components",
-  "version": "0.0.71",
+  "version": "0.0.76",
   "description": "",
   "main": "./lib",
   "module": "./src/components",
@@ -8,7 +8,8 @@
     "build": "babel ./src --out-dir ./lib",
     "dev": "webpack-dev-server --inline --content-base --env.dev",
     "setup": "npm install && npm run validate",
-    "git-pub": "git commit -am 'fix' && git push && npm run build && npm publish"
+    "git-pub": "git commit -am 'fix' && git push && npm run build && npm publish",
+    "prettier": "prettier --write \"{src,demo}/**/*.{js,jsx}\""
   },
   "repository": {
     "type": "git",
@@ -70,11 +71,16 @@
     "eslint-plugin-node": "^6.0.0",
     "eslint-plugin-promise": "^3.6.0",
     "eslint-plugin-standard": "^3.0.1",
+    "extract-text-webpack-plugin": "^2.0.0",
     "file-loader": "0.9.0",
+    "html-webpack-plugin": "^2.30.1",
+    "husky": "^1.2.0",
     "jsdom": "9.4.1",
+    "lint-staged": "^8.1.0",
     "lodash": "4.14.2",
     "nib": "^1.1.2",
     "npm-run-all": "2.3.0",
+    "prettier": "^1.15.3",
     "react": "15.3.0",
     "react-addons-test-utils": "15.3.0",
     "react-dom": "15.3.0",
@@ -85,13 +91,22 @@
     "stylus": "^0.54.5",
     "stylus-loader": "^3.0.2",
     "url-loader": "^0.5.7",
-    "html-webpack-plugin": "^2.30.1",
-    "extract-text-webpack-plugin": "^2.0.0",
     "webpack": "^3.6.0",
-    "webpack-config-utils": "2.0.0",
     "webpack-chunk-hash": "^0.4.0",
+    "webpack-config-utils": "2.0.0",
     "webpack-dev-server": "^2.7.1",
-    "webpack-validator": "2.2.7",
-    "webpack-merge": "^4.1.0"
+    "webpack-merge": "^4.1.0",
+    "webpack-validator": "2.2.7"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged"
+    }
+  },
+  "lint-staged": {
+    "{src,demo}/**/*.{js,jsx}": [
+      "prettier --write",
+      "git add"
+    ]
   }
 }
