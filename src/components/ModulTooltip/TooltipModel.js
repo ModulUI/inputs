@@ -43,7 +43,10 @@ class TooltipModel {
     }
 
     destroy() {
-        this._element && this._element.tooltip('destroy');
+        if (this._element) {
+            this._element.tooltip('destroy');
+            this._element.siblings('.tooltip').remove();
+        }
     }
 
     show() {
