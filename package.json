@@ -25,7 +25,7 @@
     "accounting": "^0.4.1",
     "classnames": "^2.1.2",
     "history": "^4.7.2",
-    "jquery-datetimepicker": "2.5.11",
+    "jquery-datetimepicker": "2.5.20",
     "modul-helpers": "^0.1.9",
     "prop-types": "^15.5.8",
     "q": "^1.4.1",
