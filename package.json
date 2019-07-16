@@ -1,6 +1,6 @@
 {
   "name": "modul-components",
-  "version": "0.0.82",
+  "version": "0.0.83",
   "description": "",
   "main": "./lib",
   "module": "./src/components",
