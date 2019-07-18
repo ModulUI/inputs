@@ -5,7 +5,7 @@ import accounting from 'accounting';
 
 const CurrencySymbol = ({value}) => {
 	if (value == 'RUR')
-		return (<span class="cur ruble"><span>р.</span></span>);
+		return (<span class="cur ruble"><span>₽</span></span>);
 	if (value == 'USD')
 		return (<span class="cur dollar"><span>$</span></span>);
 	if (value == 'EUR')
